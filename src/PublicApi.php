@@ -30,15 +30,20 @@ namespace Cointrader;
      return $this->client->get("products/{$product}/trades", $pagination);
    }
 
-   public function history($product, $start, $end, $granularity) {
+   public function history($product, $start= null, $end = null, $granularity = null) {
+     return $this->client->get("products/{$product}/candles",
+        ['start' => $start, 'end' => $end, 'granularity' => $granularity]);
    }
 
    public function stats($product) {
+     return $this->client->get("products/{$product}/stats", []);
    }
 
    public function currencies() {
+     return $this->client->get('currencies', []);
    }
 
    public function time() {
+     return $this->client->get('time', []);
    }
  }

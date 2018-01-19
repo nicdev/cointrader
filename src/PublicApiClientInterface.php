@@ -17,7 +17,7 @@ interface PublicApiClientInterface
 
   public function ticker($product);
 
-  public function trades($product);
+  public function trades($product, array $pagination);
 
   public function history($product, $start, $end, $granularity);
 

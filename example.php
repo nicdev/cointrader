@@ -12,3 +12,12 @@ $apiClient = new Cointrader\PublicApi;
 
 // Get the curent BTC-USD order book (complete)
 //print_r($apiClient->orderBook('BTC-USD', 3));
+
+// Get the BTC-USD ticker
+//print_r($apiClient->ticker('BTC-USD'));
+
+// Get the newest BTC-USD trades (always defaults to the max. of 100 results)
+//print_r($apiClient->trades('BTC-USD'));
+
+// Get the BTC-USD trades between trade #34112604 and #34112620
+//print_r($apiClient->trades('BTC-USD', ['before' => 34112604, 'after' => 34112620]));

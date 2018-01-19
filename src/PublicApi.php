@@ -23,9 +23,11 @@ namespace Cointrader;
    }
 
    public function ticker($product) {
+     return $this->client->get("products/{$product}/ticker", []);
    }
 
-   public function trades($product) {
+   public function trades($product, array $pagination = []) {
+     return $this->client->get("products/{$product}/trades", $pagination);
    }
 
    public function history($product, $start, $end, $granularity) {

@@ -14,15 +14,16 @@ class ApiCaller implements ApiCallerInterface {
   }
 
   public function get($endpoint, array $query) {
-    return $this->request('GET', $endpoint, $query);
+    return $this->request('GET', $endpoint, ['query' => $query]);
   }
 
   public function post($endpoint, array $payload) {
-    return $this->request('POST', $endpoint, $query);
+    return $this->request('POST', $endpoint, ['body' => $payload]);
   }
 
   private function request($method, $endpoint, $params) {
     try {
+      //$params = array_merge($params, ['debug' => true]);
       $req = $this->client->request($method, $endpoint, $params);
       return json_decode((string) $req->getBody(), true);
     } catch (Exception $e) {

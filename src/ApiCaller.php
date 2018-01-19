@@ -22,8 +22,13 @@ class ApiCaller implements ApiCallerInterface {
   }
 
   private function request($method, $endpoint, $params) {
-    $req = $this->client->request($method, $endpoint, $params);
-    return json_decode((string) $req->getBody(), true);
+    try {
+      $req = $this->client->request($method, $endpoint, $params);
+      return json_decode((string) $req->getBody(), true);
+    } catch (Exception $e) {
+      throw $e;
+    }
+
   }
 
 }

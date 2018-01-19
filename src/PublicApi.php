@@ -19,7 +19,6 @@ namespace Cointrader;
    }
 
    public function orderBook($product, $level = 1) {
-     print "$level\n\n\n";
      return $this->client->get("products/{$product}/book", ['level' => $level]);
    }
 

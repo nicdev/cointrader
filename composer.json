@@ -1,0 +1,16 @@
+{
+    "name": "nicdev/cointrader",
+    "description": "API wrapper for Coinbase",
+    "type": "package",
+    "require": {
+        "guzzlehttp/guzzle": "^6.3"
+    },
+    "license": "Mozilla Public License 2.0",
+    "authors": [
+        {
+            "name": "Nic Rosental",
+            "email": "nic@epiclabs.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}

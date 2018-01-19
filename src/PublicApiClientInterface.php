@@ -1,6 +1,6 @@
 <?php
 
-namespace Cointrader
+namespace Cointrader;
 
 /**
  *
@@ -8,6 +8,9 @@ namespace Cointrader
 
 interface PublicApiClientInterface
 {
+
+  const PUBLIC_ENDPOINT = 'https://api.gdax.com';
+
   public function products();
 
   public function orderBook($product, $level);
@@ -23,4 +26,5 @@ interface PublicApiClientInterface
   public function currencies();
 
   public function time();
+
 }

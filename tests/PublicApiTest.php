@@ -7,11 +7,11 @@ class PublicApiTest extends TestCase
 
     protected function setUp()
     {
-        $this->apiCaller = new Cointrader\PublicApi;
+        $this->publicApi = new Cointrader\PublicApi(new Cointrader\ApiCaller);
     }
 
     public function test_it_makes_a_call_to_products() {
-      $products = $this->apiCaller->products();
+      $products = $this->publicApi->products();
 
       $this->assertTrue(is_array($products));
     }

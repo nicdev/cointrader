@@ -12,7 +12,9 @@ class ApiCallerTest extends TestCase
     }
 
     public function test_it_makes_a_get_request_to_coinbase_api_time_endpoint() {
-      $apiCaller = new ApiCaller($this->public_endpoint);
+      $apiCaller = new ApiCaller;
+      $apiCaller->init($this->public_endpoint);
+      
       $time = $apiCaller->get('time', []);
 
       $this->assertTrue(is_array($time));

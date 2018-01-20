@@ -2,5 +2,8 @@
 API wrapper for the Coinbase API
 
 ## To Do
-* Private methods
-* Tests
+* Private API wrapper
+* Much better test coverage
+  * Mock/unmock as needed
+  * Reorganize
+* CI

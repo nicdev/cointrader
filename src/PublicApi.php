@@ -10,8 +10,9 @@ namespace Cointrader;
 
    protected $client;
 
-   public function __construct() {
-      $this->client = new ApiCaller(self::PUBLIC_ENDPOINT);
+   public function __construct(ApiCaller $apiCaller) {
+      $this->client = $apiCaller;
+      $this->client->init(self::PUBLIC_ENDPOINT);
    }
 
    public function products() {

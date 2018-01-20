@@ -3,7 +3,8 @@
     "description": "API wrapper for Coinbase",
     "type": "package",
     "require": {
-        "guzzlehttp/guzzle": "^6.3"
+        "guzzlehttp/guzzle": "^6.3",
+        "phpunit/phpunit": "^7.0@dev"
     },
     "autoload": {
         "psr-4": {"Cointrader\\": "src/"}
@@ -15,5 +16,8 @@
             "email": "nic@epiclabs.com"
         }
     ],
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "require-dev": {
+        "mockery/mockery": "^1.0@dev"
+    }
 }

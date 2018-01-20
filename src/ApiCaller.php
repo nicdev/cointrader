@@ -9,7 +9,7 @@ class ApiCaller implements ApiCallerInterface {
 
   protected $client;
 
-  public function __construct($base_uri) {
+  public function init($base_uri) {
     $this->client = new Client(['base_uri' => $base_uri]);
   }
 
@@ -23,7 +23,6 @@ class ApiCaller implements ApiCallerInterface {
 
   private function request($method, $endpoint, $params) {
     try {
-      //$params = array_merge($params, ['debug' => true]);
       $req = $this->client->request($method, $endpoint, $params);
       return json_decode((string) $req->getBody(), true);
     } catch (Exception $e) {

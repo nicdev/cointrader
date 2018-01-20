@@ -2,7 +2,7 @@
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-$apiClient = new Cointrader\PublicApi;
+$apiClient = new Cointrader\PublicApi(new Cointrader\ApiCaller);
 
 // Get a list of available products (currencies)
 //print_r($apiClient->products());
@@ -37,4 +37,4 @@ $apiClient = new Cointrader\PublicApi;
 //print_r($apiClient->currencies());
 
 // Get the Coibase API server time
-//print_r($apiClient->time());
+print_r($apiClient->time());

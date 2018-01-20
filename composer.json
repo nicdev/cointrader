@@ -15,5 +15,8 @@
             "email": "nic@epiclabs.com"
         }
     ],
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "require-dev": {
+        "php-vcr/php-vcr": "^1.4@dev"
+    }
 }

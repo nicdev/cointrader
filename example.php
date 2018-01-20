@@ -8,7 +8,7 @@ $apiClient = new Cointrader\PublicApi(new Cointrader\ApiCaller);
 //print_r($apiClient->products());
 
 // Get the curent BTC-USD order book (best bid/ask)
-//print_r($apiClient->orderBook('BTC-USD', 1));
+print_r($apiClient->orderBook('BTC-USD', 1));
 
 // Get the curent BTC-USD order book (complete)
 //print_r($apiClient->orderBook('BTC-USD', 3));
@@ -37,4 +37,4 @@ $apiClient = new Cointrader\PublicApi(new Cointrader\ApiCaller);
 //print_r($apiClient->currencies());
 
 // Get the Coibase API server time
-print_r($apiClient->time());
+//print_r($apiClient->time());

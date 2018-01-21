@@ -2,13 +2,19 @@
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-$apiClient = new Cointrader\PublicApi(new Cointrader\ApiCaller);
+// Keep your API sensitive information in a .env file
+// See .env.example
+$dotenv = new Dotenv\Dotenv(__DIR__);
+$dotenv->load();
+
+// ### PUBLIC ENDPOINTS ###
+//$apiClient = new Cointrader\PublicApi(new Cointrader\ApiCaller);
 
 // Get a list of available products (currencies)
 //print_r($apiClient->products());
 
 // Get the curent BTC-USD order book (best bid/ask)
-print_r($apiClient->orderBook('BTC-USD', 1));
+//print_r($apiClient->orderBook('BTC-USD', 1));
 
 // Get the curent BTC-USD order book (complete)
 //print_r($apiClient->orderBook('BTC-USD', 3));
@@ -38,3 +44,14 @@ print_r($apiClient->orderBook('BTC-USD', 1));
 
 // Get the Coibase API server time
 //print_r($apiClient->time());
+
+// ### PRIVATE ENDPOINTS ###
+$apiClient = new Cointrader\PrivateApi(new Cointrader\ApiCaller, getenv('API_KEY'), getenv('API_SECRET'), getenv('API_PASSPHRASE'));
+
+// Get user's trading accounts
+//print_r($apiClient->accounts());
+
+// Get a single account
+//print_r($apiClient->accounts('XXXXXXXX-YYYY-ZZZZ-1234-123456789ABC'));
+
+//print_r($apiClient->accountHistory('XXXXXXXX-YYYY-ZZZZ-1234-123456789ABC'));

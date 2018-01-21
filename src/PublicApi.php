@@ -6,45 +6,57 @@ namespace Cointrader;
  *
  */
 
- class PublicApi implements PublicApiClientInterface {
+class PublicApi implements PublicApiClientInterface
+{
 
-   protected $client;
+    protected $client;
 
-   public function __construct(ApiCaller $apiCaller) {
-      $this->client = $apiCaller;
-      $this->client->init(self::PUBLIC_ENDPOINT);
-   }
+    public function __construct(ApiCaller $apiCaller)
+    {
+        $this->client = $apiCaller;
+        $this->client->init(self::ENDPOINT_URL);
+    }
 
-   public function products() {
-      return $this->client->get('products', []);
-   }
+    public function products()
+    {
+        return $this->client->get('products', []);
+    }
 
-   public function orderBook($product, $level = 1) {
-     return $this->client->get("products/{$product}/book", ['level' => $level]);
-   }
+    public function orderBook($product, $level = 1)
+    {
+        return $this->client->get("products/{$product}/book", ['level' => $level]);
+    }
 
-   public function ticker($product) {
-     return $this->client->get("products/{$product}/ticker", []);
-   }
+    public function ticker($product)
+    {
+        return $this->client->get("products/{$product}/ticker", []);
+    }
 
-   public function trades($product, array $pagination = []) {
-     return $this->client->get("products/{$product}/trades", $pagination);
-   }
+    public function trades($product, array $pagination = [])
+    {
+        return $this->client->get("products/{$product}/trades", $pagination);
+    }
 
-   public function history($product, $start= null, $end = null, $granularity = null) {
-     return $this->client->get("products/{$product}/candles",
-        ['start' => $start, 'end' => $end, 'granularity' => $granularity]);
-   }
+    public function history($product, $start= null, $end = null, $granularity = null)
+    {
+        return $this->client->get(
+            "products/{$product}/candles",
+            ['start' => $start, 'end' => $end, 'granularity' => $granularity]
+        );
+    }
 
-   public function stats($product) {
-     return $this->client->get("products/{$product}/stats", []);
-   }
+    public function stats($product)
+    {
+        return $this->client->get("products/{$product}/stats", []);
+    }
 
-   public function currencies() {
-     return $this->client->get('currencies', []);
-   }
+    public function currencies()
+    {
+        return $this->client->get('currencies', []);
+    }
 
-   public function time() {
-     return $this->client->get('time', []);
-   }
- }
+    public function time()
+    {
+        return $this->client->get('time', []);
+    }
+}

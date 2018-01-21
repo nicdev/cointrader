@@ -3,7 +3,8 @@
     "description": "API wrapper for Coinbase",
     "type": "package",
     "require": {
-        "guzzlehttp/guzzle": "^6.3"
+        "guzzlehttp/guzzle": "^6.3",
+        "vlucas/phpdotenv": "^2.5@dev"
     },
     "autoload": {
         "psr-4": {"Cointrader\\": "src/"}
@@ -18,6 +19,6 @@
     "minimum-stability": "dev",
     "require-dev": {
         "php-vcr/php-vcr": "^1.4",
-        "phpunit/phpunit": "^6.5"
+        "phpunit/phpunit": "^7.0"
     }
 }

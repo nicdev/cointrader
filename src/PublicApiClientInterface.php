@@ -9,7 +9,7 @@ namespace Cointrader;
 interface PublicApiClientInterface
 {
 
-    const PUBLIC_ENDPOINT = 'https://api.gdax.com';
+    const ENDPOINT_URL = 'https://api.gdax.com';
 
     public function products();
 

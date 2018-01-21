@@ -49,4 +49,9 @@ $dotenv->load();
 $apiClient = new Cointrader\PrivateApi(new Cointrader\ApiCaller, getenv('API_KEY'), getenv('API_SECRET'), getenv('API_PASSPHRASE'));
 
 // Get user's trading accounts
-print_r($apiClient->accounts());
+//print_r($apiClient->accounts());
+
+// Get a single account
+//print_r($apiClient->accounts('XXXXXXXX-YYYY-ZZZZ-1234-123456789ABC'));
+
+//print_r($apiClient->accountHistory('XXXXXXXX-YYYY-ZZZZ-1234-123456789ABC'));

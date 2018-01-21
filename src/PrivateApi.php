@@ -24,9 +24,16 @@ class PrivateApi implements PrivateApiClientInterface
         $this->client->init(self::ENDPOINT_URL, ['key' => $this->key, 'secret' => $this->secret, 'passphrase' => $this->passphrase]);
     }
 
-    public function accounts() 
+    public function accounts($accountId = null)
     {
-        return $this->client->get('accounts', [], true);
+        $endpoint = $accountId ? "accounts/{$accountId}" : 'accounts';
+        return $this->client->get($endpoint, [], true);
+    }
+
+    public function accountHistory($accountId, $pagination = [])
+    {
+        $endpoint = "accounts/{$accountId}/ledger";
+        return $this->client->get($endpoint, [], true);
     }
 
 }

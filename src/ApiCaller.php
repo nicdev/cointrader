@@ -35,7 +35,7 @@ class ApiCaller implements ApiCallerInterface
         return base64_encode(hash_hmac("sha256", $seed, base64_decode($this->secret), true));
     }
 
-    protected function makeHeaders($signature) 
+    protected function makeHeaders($signature)
     {
         return
         ['headers' => [
@@ -68,6 +68,16 @@ class ApiCaller implements ApiCallerInterface
             $params = $payload;
         }
         return $this->request('POST', $endpoint, $params);
+    }
+
+    public function delete($endpoint, $private = false)
+    {
+        if($private) {
+            $params = self::makeHeaders(self::makeSignature('DELETE', $endpoint));
+        } else {
+            $params = null;
+        }
+        return $this->request('DELETE', $endpoint, $params);
     }
 
     public function request($method, $endpoint, $params)

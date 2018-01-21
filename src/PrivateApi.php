@@ -24,7 +24,7 @@ class PrivateApi implements PrivateApiClientInterface
         $this->client->init(self::ENDPOINT_URL, ['key' => $this->key, 'secret' => $this->secret, 'passphrase' => $this->passphrase]);
     }
 
-    public function accounts($accountId = null)
+    public function tradingAccounts($accountId = null)
     {
         $endpoint = $accountId ? "accounts/{$accountId}" : 'accounts';
         return $this->client->get($endpoint, [], true);
@@ -34,6 +34,116 @@ class PrivateApi implements PrivateApiClientInterface
     {
         $endpoint = "accounts/{$accountId}/ledger";
         return $this->client->get($endpoint, [], true);
+    }
+
+    public function accountHolds($accountId, $pagination)
+    {
+
+    }
+
+    public function placeOrder($params)
+    {
+
+    }
+
+    public function cancelOrder($orderId)
+    {
+
+    }
+
+    public function cancelAllOrders($productId)
+    {
+
+    }
+
+    public function orders($params)
+    {
+
+    }
+
+    public function order($orderId)
+    {
+
+    }
+
+    public function fills($params)
+    {
+
+    }
+
+    public function funding($status)
+    {
+
+    }
+
+    public function repay($params)
+    {
+
+    }
+
+    public function marginTransfer($params)
+    {
+
+    }
+
+    public function position()
+    {
+
+    }
+
+    public function closePosition($repayOnly)
+    {
+
+    }
+
+    public function deposit($params)
+    {
+
+    }
+
+    public function coinbaseTransfer($params)
+    {
+
+    }
+
+    public function withdraw($params)
+    {
+
+    }
+
+    public function coinbaseWithdraw($params)
+    {
+
+    }
+
+    public function withdrawCrypto($params)
+    {
+
+    }
+
+    public function paymentMethods()
+    {
+
+    }
+
+    public function coinbaseAccounts()
+    {
+
+    }
+
+    public function createReport($params)
+    {
+
+    }
+
+    public function reportStatus($reportId)
+    {
+
+    }
+
+    public function trailingVolume()
+    {
+
     }
 
 }

@@ -8,6 +8,7 @@ php:
 before_script:
   - composer self-update
   - composer install --no-interaction --prefer-source --dev
+  - curl -sSfL -o ~/.phpenv/versions/hhvm/bin/phpunit https://phar.phpunit.de/phpunit-5.7.phar
   # make sure git tests do not complain about user/email not being set
   - git config --global user.name nicdev
   - git config --global user.email nic@epiclabs.com

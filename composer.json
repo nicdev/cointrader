@@ -17,7 +17,7 @@
     ],
     "minimum-stability": "dev",
     "require-dev": {
-        "php-vcr/php-vcr": "^1.4@dev",
-        "phpunit/phpunit": "^7.0@dev"
+        "php-vcr/php-vcr": "^1.4",
+        "phpunit/phpunit": "^6.5"
     }
 }

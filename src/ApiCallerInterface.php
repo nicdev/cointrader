@@ -10,11 +10,15 @@ use \GuzzleHttp\Client;
 
 interface ApiCallerInterface
 {
-    public function init($base_uri, $privateParams);
+    public function init($baseUri, $privateParams);
 
-    public function get($endpoint, array $query, $private);
+    public function get($endpoint, array $query);
 
-    public function post($endpoint, array $payload, $private);
+    public function getPrivate($endpoint, array $query);
+
+    public function post($endpoint, array $payload);
+
+    public function postPrivate($endpoint, array $payload);
 
     public function request($method, $endpoint, $params);
 }

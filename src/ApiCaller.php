@@ -11,12 +11,12 @@ class ApiCaller implements ApiCallerInterface
     protected $key;
     protected $secret;
     protected $passphrase;
-    protected $base_uri;
+    protected $baseUri;
 
-    public function init($base_uri, $privateParams = [])
+    public function init($baseUri, $privateParams = [])
     {
-        $this->client = new Client(['base_uri' => $base_uri]);
-        $this->base_uri = $base_uri;
+        $this->client = new Client(['base_uri' => $baseUri]);
+        $this->base_uri = $baseUri;
 
         if(array_key_exists('key', $privateParams) && array_key_exists('secret', $privateParams) && array_key_exists('passphrase', $privateParams)) {
             $this->key = $privateParams['key'];
@@ -28,14 +28,14 @@ class ApiCaller implements ApiCallerInterface
     protected function makeSignature($method, $endpoint, $body = null)
     {
         $body = is_array($body) ? json_encode($body) : $body;
-        $request_path = trim(substr($endpoint, 0, 1) === '/' ? $endpoint : '/' . $endpoint);
+        $requestPath = trim(substr($endpoint, 0, 1) === '/' ? $endpoint : '/' . $endpoint);
         $timestamp = time();
-        $seed = $timestamp.$method.$request_path.$body;
+        $seed = $timestamp.$method.$requestPath.$body;
 
         return base64_encode(hash_hmac("sha256", $seed, base64_decode($this->secret), true));
     }
 
-    protected function makeHeaders($signature) 
+    protected function makeHeaders($signature)
     {
         return
         ['headers' => [
@@ -47,26 +47,32 @@ class ApiCaller implements ApiCallerInterface
         ];
     }
 
-    public function get($endpoint, array $query, $private = false)
+    public function get($endpoint, array $query)
     {
-        if($private) {
-            $headers = self::makeHeaders(self::makeSignature('GET', $endpoint));
-            $params = array_merge($query, $headers);
-        } else {
-            $params = $query;
-        }
+        return $this->request('GET', $endpoint, $query);
+    }
+
+    public function getPrivate($endpoint, array $query)
+    {
+        $headers = self::makeHeaders(self::makeSignature('GET', $endpoint));
+        $params = array_merge($query, $headers);
+
         return $this->request('GET', $endpoint, $params);
     }
 
 
-    public function post($endpoint, array $payload, $private = false)
+    public function post($endpoint, array $payload)
     {
-        if($private) {
-            $headers = self::makeHeaders(self::makeSignature('POST', $endpoint, $payload));
-            $params = array_merge($payload, $headers);
-        } else {
-            $params = $payload;
-        }
+        $payload;
+
+        return $this->request('POST', $endpoint, $payload);
+    }
+
+    public function postPrivate($endpoint, array $payload)
+    {
+        $headers = self::makeHeaders(self::makeSignature('POST', $endpoint, $payload));
+        $params = array_merge($payload, $headers);
+        
         return $this->request('POST', $endpoint, $params);
     }
 

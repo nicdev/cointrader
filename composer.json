@@ -9,7 +9,7 @@
     "autoload": {
         "psr-4": {"Cointrader\\": "src/"}
     },
-    "license": "Mozilla Public License 2.0",
+    "license": "MPL-2.0",
     "authors": [
         {
             "name": "Nic Rosental",

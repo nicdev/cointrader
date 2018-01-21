@@ -3,3 +3,5 @@
 /tests/fixtures/*
 !/tests/fixtures/.gitkeep
 .env
+phpDocumentor.phar
+phpmd.html

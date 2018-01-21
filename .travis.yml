@@ -1,0 +1,20 @@
+language: php
+php:
+  - '7.0'
+  - '7.1'
+  - '7.2'
+  - hhvm # on Trusty only
+  - nightly
+install:
+  # flags to pass to install
+  - flags="--ansi --prefer-dist --no-interaction --optimize-autoloader --no-suggest --no-progress"
+  # install dependencies using system provided composer binary
+  - composer install $flags
+  # install dependencies using composer from source
+  - bin/composer install $flags
+before_script:
+  # make sure git tests do not complain about user/email not being set
+  - git config --global user.name nicdev
+  - git config --global user.email nic@epiclabs.com
+script:
+  - vendor/bin/phpunit

@@ -4,7 +4,6 @@ namespace Cointrader;
 
 use \GuzzleHttp\Client;
 
-
 class ApiCaller implements ApiCallerInterface
 {
 
@@ -12,10 +11,6 @@ class ApiCaller implements ApiCallerInterface
 
   public function init($base_uri) {
     $this->client = new Client(['base_uri' => $base_uri]);
-  }
-
-  public function get($endpoint, array $query) {
-    return $this->request('GET', $endpoint, ['query' => $query]);
   }
 
     public function get($endpoint, array $query)
@@ -38,17 +33,4 @@ class ApiCaller implements ApiCallerInterface
       throw $e;
     }
   }
-
-    private function request($method, $endpoint, $params)
-    {
-        try {
-            //$params = array_merge($params, ['debug' => true]);
-            $req = $this->client->request($method, $endpoint, $params);
-            return json_decode((string) $req->getBody(), true);
-        } catch (Exception $e) {
-            throw $e;
-        }
-
-    }
-
 }

@@ -4,11 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-<<<<<<< HEAD
-    "content-hash": "52ce31b9464c6c9ab4dbbbf907fecda1",
-=======
-    "content-hash": "af0dd007129788797d6750ee0e17083a",
->>>>>>> tests
+    "content-hash": "ca7fc81d2eea133c27448e59d0e970c8",
     "packages": [
         {
             "name": "doctrine/instantiator",
@@ -862,12 +858,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "019753968e12fdcbef907dc583b3b8ca97d10c54"
+                "reference": "1dbe2544ffb4cb09a750ff428e0701ee39bd6267"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/019753968e12fdcbef907dc583b3b8ca97d10c54",
-                "reference": "019753968e12fdcbef907dc583b3b8ca97d10c54",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/1dbe2544ffb4cb09a750ff428e0701ee39bd6267",
+                "reference": "1dbe2544ffb4cb09a750ff428e0701ee39bd6267",
                 "shasum": ""
             },
             "require": {
@@ -934,7 +930,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2018-01-19 10:15:55"
+            "time": "2018-01-20 09:33:24"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -1694,6 +1690,61 @@
     ],
     "packages-dev": [
         {
+            "name": "beberlei/assert",
+            "version": "v2.8.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/beberlei/assert.git",
+                "reference": "fd8dc8f6de4645ccf4d1a0b38a6b8fdaf2e8b337"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/beberlei/assert/zipball/fd8dc8f6de4645ccf4d1a0b38a6b8fdaf2e8b337",
+                "reference": "fd8dc8f6de4645ccf4d1a0b38a6b8fdaf2e8b337",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": ">=5.3"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.1.1",
+                "phpunit/phpunit": "^4.8.35|^5.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Assert\\": "lib/Assert"
+                },
+                "files": [
+                    "lib/Assert/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Benjamin Eberlei",
+                    "email": "kontakt@beberlei.de",
+                    "role": "Lead Developer"
+                },
+                {
+                    "name": "Richard Quadling",
+                    "email": "rquadling@gmail.com",
+                    "role": "Collaborator"
+                }
+            ],
+            "description": "Thin assertion library for input validation in business models.",
+            "keywords": [
+                "assert",
+                "assertion",
+                "validation"
+            ],
+            "time": "2017-11-30T13:25:15+00:00"
+        },
+        {
             "name": "hamcrest/hamcrest-php",
             "version": "dev-master",
             "source": {
@@ -1805,64 +1856,6 @@
                 "testing"
             ],
             "time": "2018-01-10T09:32:21+00:00"
-        }
-    ],
-<<<<<<< HEAD
-    "packages-dev": [
-        {
-            "name": "beberlei/assert",
-            "version": "v2.8.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/beberlei/assert.git",
-                "reference": "fd8dc8f6de4645ccf4d1a0b38a6b8fdaf2e8b337"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/beberlei/assert/zipball/fd8dc8f6de4645ccf4d1a0b38a6b8fdaf2e8b337",
-                "reference": "fd8dc8f6de4645ccf4d1a0b38a6b8fdaf2e8b337",
-                "shasum": ""
-            },
-            "require": {
-                "ext-mbstring": "*",
-                "php": ">=5.3"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2.1.1",
-                "phpunit/phpunit": "^4.8.35|^5.7"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Assert\\": "lib/Assert"
-                },
-                "files": [
-                    "lib/Assert/functions.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-2-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Benjamin Eberlei",
-                    "email": "kontakt@beberlei.de",
-                    "role": "Lead Developer"
-                },
-                {
-                    "name": "Richard Quadling",
-                    "email": "rquadling@gmail.com",
-                    "role": "Collaborator"
-                }
-            ],
-            "description": "Thin assertion library for input validation in business models.",
-            "keywords": [
-                "assert",
-                "assertion",
-                "validation"
-            ],
-            "time": "2017-11-30T13:25:15+00:00"
         },
         {
             "name": "php-vcr/php-vcr",
@@ -1912,7 +1905,7 @@
                 }
             ],
             "description": "Record your test suite's HTTP interactions and replay them during future test runs for fast, deterministic, accurate tests.",
-            "time": "2017-12-12T09:37:40+00:00"
+            "time": "2017-12-12 09:37:40"
         },
         {
             "name": "symfony/event-dispatcher",
@@ -1975,7 +1968,7 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
-            "time": "2018-01-19T07:23:48+00:00"
+            "time": "2018-01-19 07:23:48"
         },
         {
             "name": "symfony/yaml",
@@ -2033,20 +2026,15 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2018-01-03T07:38:11+00:00"
+            "time": "2018-01-03 07:38:11"
         }
     ],
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "php-vcr/php-vcr": 20
-=======
-    "aliases": [],
-    "minimum-stability": "dev",
-    "stability-flags": {
         "phpunit/phpunit": 20,
+        "php-vcr/php-vcr": 20,
         "mockery/mockery": 20
->>>>>>> tests
     },
     "prefer-stable": false,
     "prefer-lowest": false,

@@ -18,10 +18,7 @@
     ],
     "minimum-stability": "dev",
     "require-dev": {
-<<<<<<< HEAD
-        "php-vcr/php-vcr": "^1.4@dev"
-=======
+        "php-vcr/php-vcr": "^1.4@dev",
         "mockery/mockery": "^1.0@dev"
->>>>>>> tests
     }
 }

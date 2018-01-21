@@ -35,24 +35,25 @@ class ApiCaller implements ApiCallerInterface
         return base64_encode(hash_hmac("sha256", $seed, base64_decode($this->secret), true));
     }
 
-    protected function makeHeaders($signature) {
-      return
+    protected function makeHeaders($signature) 
+    {
+        return
         ['headers' => [
           'CB-ACCESS-SIGN' => $signature,
           'CB-ACCESS-TIMESTAMP' => time(),
           'CB-ACCESS-KEY' => $this->key,
           'CB-ACCESS-PASSPHRASE' => $this->passphrase
         ]
-      ];
+        ];
     }
 
     public function get($endpoint, array $query, $private = false)
     {
         if($private) {
-          $headers = self::makeHeaders(self::makeSignature('GET', $endpoint));
-          $params = array_merge($query, $headers);
+            $headers = self::makeHeaders(self::makeSignature('GET', $endpoint));
+            $params = array_merge($query, $headers);
         } else {
-          $params = $query;
+            $params = $query;
         }
         return $this->request('GET', $endpoint, $params);
     }
@@ -61,10 +62,10 @@ class ApiCaller implements ApiCallerInterface
     public function post($endpoint, array $payload, $private = false)
     {
         if($private) {
-          $headers = self::makeHeaders(self::makeSignature('POST', $endpoint, $payload));
-          $params = array_merge($payload, $headers);
+            $headers = self::makeHeaders(self::makeSignature('POST', $endpoint, $payload));
+            $params = array_merge($payload, $headers);
         } else {
-          $params = $payload;
+            $params = $payload;
         }
         return $this->request('POST', $endpoint, $params);
     }

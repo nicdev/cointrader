@@ -24,8 +24,9 @@ class PrivateApi implements PrivateApiClientInterface
         $this->client->init(self::ENDPOINT_URL, ['key' => $this->key, 'secret' => $this->secret, 'passphrase' => $this->passphrase]);
     }
 
-    public function accounts() {
-      return $this->client->get('accounts', [], true);
+    public function accounts() 
+    {
+        return $this->client->get('accounts', [], true);
     }
 
 }

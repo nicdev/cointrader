@@ -19,7 +19,6 @@
     "require-dev": {
         "php-vcr/php-vcr": "^1.4",
         "phpunit/phpunit": "^7.0",
-        "vlucas/phpdotenv": "^2.5@dev",
-        "phpmd/phpmd": "dev-master"
+        "vlucas/phpdotenv": "^2.5@dev"
     }
 }

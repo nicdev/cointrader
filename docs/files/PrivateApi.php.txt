@@ -33,10 +33,11 @@ class PrivateApi implements PrivateApiClientInterface
     /**
      * Creates a PrivateApi object to use the authenticated methods of the API
      *
-     * @param Cointrader\ApiCaller $apiCaller  makes the actual requests to the API
-     * @param string               $key        API key provided by Coinbase
-     * @param string               $secret     API secret provided by Coinbase or you on Coinbase's settings
-     * @param string               $passphrase API passphrase provided by you on Coinbase's settings
+     * @param Cointrader\ApiCaller $apiCaller makes the actual requests to the API
+     * @param string $key API key provided by Coinbase
+     * @param string $secret API secret provided by Coinbase or you on Coinbase's settings
+     * @param string $passphrase API passphrase provided by you on Coinbase's settings
+     *
      */
     public function __construct(ApiCaller $apiCaller, $key, $secret, $passphrase)
     {
@@ -53,6 +54,7 @@ class PrivateApi implements PrivateApiClientInterface
      *
      * @param  string $accountId (optional) limits the response to a single account
      * @return array with account information
+     *
      */
     public function accounts($accountId = null)
     {
@@ -62,10 +64,10 @@ class PrivateApi implements PrivateApiClientInterface
 
     /**
      * Returns transaction history for an account
-     *
      * @param  string $accountId
      * @param  array  $pagination (optional)
      * @return array with transaction history for the account
+     * 
      */
     public function accountHistory($accountId, $pagination = [])
     {
@@ -74,3 +76,4 @@ class PrivateApi implements PrivateApiClientInterface
     }
 
 }
+

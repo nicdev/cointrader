@@ -1,38 +1,37 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
+use Cointrader\ApiCaller;
+use VCR\VCR;
 
 class PublicApiTest extends TestCase
 {
 
-    protected function setUp() {
-
-    }
-
-    public function tearDown() {
-        Mockery::close();
-    }
-
     public function test_it_makes_a_call_to_products() {
-      $apiCaller = Mockery::mock('Cointrader\ApiCaller')->makePartial();
-      $returnValue = json_encode(file_get_contents(__DIR__ . '/return_values/public_api/products.json'));
-      $apiCaller->shouldReceive('get')->with(['products', []])->andReturn($returnValue);
 
-      $this->publicApi = new Cointrader\PublicApi($apiCaller);
+      VCR::turnOn();
+      VCR::insertCassette('products_endpoint.yml');
+
+      $this->publicApi = new Cointrader\PublicApi(new ApiCaller);
 
       $products = $this->publicApi->products();
+
+      VCR::eject();
+      VCR::turnOff();
 
       $this->assertTrue(is_array($products));
     }
 
     public function test_it_makes_a_call_to_order_book() {
-      $apiCaller = Mockery::mock('Cointrader\ApiCaller')->makePartial();
-      $returnValue = json_encode(file_get_contents(__DIR__ . '/return_values/public_api/order_book.json'));
-      $apiCaller->shouldReceive('get')->with(['orderbook', ['BTC-USD', 1]])->andReturn($returnValue);
+      VCR::turnOn();
+      VCR::insertCassette('orderbook.yml');
 
-      $this->publicApi = new Cointrader\PublicApi($apiCaller);
+      $this->publicApi = new Cointrader\PublicApi(new ApiCaller);
 
       $orderBook = $this->publicApi->orderBook('BTC-USD', 1);
+
+      VCR::eject();
+      VCR::turnOff();
 
       $this->assertTrue(is_array($orderBook));
       $this->assertArrayHasKey('sequence', $orderBook);

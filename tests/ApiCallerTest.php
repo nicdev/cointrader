@@ -13,6 +13,7 @@ class ApiCallerTest extends TestCase
     }
 
     public function test_it_makes_a_get_request_to_coinbase_api_time_endpoint() {
+
       VCR::turnOn();
       VCR::insertCassette('time_endpoint.yml');
 

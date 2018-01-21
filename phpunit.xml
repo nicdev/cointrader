@@ -6,7 +6,7 @@
         <testsuite name="Cointrader Test Suite">
             <directory suffix="Test.php">./tests/</directory>
             <php>
-              <const name="PUBLIC_ENDPOINT" value="https://api.gdax.com"/>
+              <const name="ENDPOINT_URL" value="https://api.gdax.com"/>
               <const name="RETURN_VALUES_DIR" value="./return_values/"/>
             </php>
         </testsuite>

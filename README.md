@@ -5,5 +5,5 @@ API wrapper for the Coinbase API
 
 ## To Do (somewhat prioritized)
 * Much better test coverage.
-* Proper doc blocks/comments.
+* Proper DocBlocks/comments.
 * Docs.

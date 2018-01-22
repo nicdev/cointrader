@@ -23,13 +23,13 @@ interface PrivateApiClientInterface
 
     public function cancelAllOrders($productId);
 
-    public function orders($params);
+    public function orders($status, $productId);
 
     public function order($orderId);
 
-    public function fills($params);
+    public function fills($orderId, $productId, $pagination);
 
-    public function funding($status);
+    public function funding($status, $pagination);
 
     public function repay($params);
 

@@ -33,10 +33,11 @@ class PrivateApi implements PrivateApiClientInterface
     /**
      * Creates a PrivateApi object to use the authenticated methods of the API
      *
-     * @param Cointrader\ApiCaller $apiCaller  makes the actual requests to the API
-     * @param string               $key        API key provided by Coinbase
-     * @param string               $secret     API secret provided by Coinbase or you on Coinbase's settings
-     * @param string               $passphrase API passphrase provided by you on Coinbase's settings
+     * @param Cointrader\ApiCaller $apiCaller makes the actual requests to the API
+     * @param string $key API key provided by Coinbase
+     * @param string $secret API secret provided by Coinbase or you on Coinbase's settings
+     * @param string $passphrase API passphrase provided by you on Coinbase's settings
+     *
      */
     public function __construct(ApiCaller $apiCaller, $key, $secret, $passphrase)
     {
@@ -53,8 +54,9 @@ class PrivateApi implements PrivateApiClientInterface
      *
      * @param  string $accountId (optional) limits the response to a single account
      * @return array with account information
+     *
      */
-    public function tradingAccounts($accountId = null)
+    public function accounts($accountId = null)
     {
         $endpoint = $accountId ? "accounts/{$accountId}" : 'accounts';
         return $this->client->get($endpoint, [], true);
@@ -62,10 +64,10 @@ class PrivateApi implements PrivateApiClientInterface
 
     /**
      * Returns transaction history for an account
-     *
      * @param  string $accountId
      * @param  array  $pagination (optional)
      * @return array with transaction history for the account
+     * 
      */
     public function accountHistory($accountId, $pagination = [])
     {
@@ -73,114 +75,5 @@ class PrivateApi implements PrivateApiClientInterface
         return $this->client->get($endpoint, [], true);
     }
 
-    public function accountHolds($accountId, $pagination)
-    {
-
-    }
-
-    public function placeOrder($params)
-    {
-
-    }
-
-    public function cancelOrder($orderId)
-    {
-
-    }
-
-    public function cancelAllOrders($productId)
-    {
-
-    }
-
-    public function orders($params)
-    {
-
-    }
-
-    public function order($orderId)
-    {
-
-    }
-
-    public function fills($params)
-    {
-
-    }
-
-    public function funding($status)
-    {
-
-    }
-
-    public function repay($params)
-    {
-
-    }
-
-    public function marginTransfer($params)
-    {
-
-    }
-
-    public function position()
-    {
-
-    }
-
-    public function closePosition($repayOnly)
-    {
-
-    }
-
-    public function deposit($params)
-    {
-
-    }
-
-    public function coinbaseTransfer($params)
-    {
-
-    }
-
-    public function withdraw($params)
-    {
-
-    }
-
-    public function coinbaseWithdraw($params)
-    {
-
-    }
-
-    public function withdrawCrypto($params)
-    {
-
-    }
-
-    public function paymentMethods()
-    {
-
-    }
-
-    public function coinbaseAccounts()
-    {
-
-    }
-
-    public function createReport($params)
-    {
-
-    }
-
-    public function reportStatus($reportId)
-    {
-
-    }
-
-    public function trailingVolume()
-    {
-
-    }
-
 }
+

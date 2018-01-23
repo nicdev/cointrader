@@ -91,9 +91,12 @@ class PublicApi implements PublicApiClientInterface
     public function history($params)
     {
         return $this->client->get(
-            "products/{$product}/candles",
-            ['start' => $params['start'], 'end' => $params['end'], 'granularity' => $params['granularity']
-        );
+            "products/{$params['product']}/candles",
+            [
+              'start' => $params['start'],
+              'end' => $params['end'],
+              'granularity' => $params['granularity']
+            ]);
     }
 
     /**

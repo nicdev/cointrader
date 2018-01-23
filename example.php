@@ -29,12 +29,12 @@ $dotenv->load();
 //print_r($apiClient->trades('BTC-USD', ['before' => 34112604, 'after' => 34112620]));
 
 // Get the historical stats for BTC-USD
-//print_r($apiClient->history('BTC-USD'));
+//print_r($apiClient->history(['product' => 'BTC-USD']));
 
 // Get the historical stats for BTC-USD between
 // 1/19/2018 @ 21:55 (9:55pm) - 1/19/2018 @ 22:00 (10:00pm) UTC.
 // Granularity of 1 minute.
-//print_r($apiClient->history('BTC-USD', '2018-01-19T21:55:00+00:00', '2018-01-19T22:00:00+00:00', 60));
+//print_r($apiClient->history(['product' => 'BTC-USD', 'start' => '2018-01-19T21:55:00+00:00', 'end' => '2018-01-19T22:00:00+00:00', 'interval' => 60));
 
 // Get stats for the last 24 hours for BTC-USD
 //print_r($apiClient->stats('BTC-USD'));

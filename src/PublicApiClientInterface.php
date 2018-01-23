@@ -19,7 +19,7 @@ interface PublicApiClientInterface
 
     public function trades($product, array $pagination);
 
-    public function history($product, $start, $end, $granularity);
+    public function history($params);
 
     public function stats($product);
 

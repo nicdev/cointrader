@@ -12,23 +12,26 @@ class PrivateApi implements PrivateApiClientInterface
     /**
      * @var $client must be an instance of Cointrader\ApiCaller
      */
+
     protected $client;
 
     /**
      * @var $key is the API key provided by Coinbase
      */
+
     protected $key;
 
     /**
      * @var $secret is the API secret provided by Coinbase or you on Coinbase's settings
      */
+
     protected $secret;
 
     /**
      * @var $key is the API passphrase provided by you on Coinbase's settings
      */
-    protected $passphrase;
 
+    protected $passphrase;
 
     /**
      * Creates a PrivateApi object to use the authenticated methods of the API
@@ -38,6 +41,7 @@ class PrivateApi implements PrivateApiClientInterface
      * @param string               $secret     API secret provided by Coinbase or you on Coinbase's settings
      * @param string               $passphrase API passphrase provided by you on Coinbase's settings
      */
+
     public function __construct(ApiCaller $apiCaller, $key, $secret, $passphrase)
     {
         $this->key = $key;
@@ -48,29 +52,325 @@ class PrivateApi implements PrivateApiClientInterface
     }
 
     /**
-     * Returns all accounts for the authenticated user, or a single
+     * All accounts for the authenticated user, or a single
      * account if an ID is passed
      *
-     * @param  string $accountId (optional) limits the response to a single account
-     * @return array with account information
+     * @param  string    $accountId (optional) limits the response to a single account
+     * @return array     Account information
      */
-    public function accounts($accountId = null)
+
+    public function tradingAccounts($accountId = null)
     {
         $endpoint = $accountId ? "accounts/{$accountId}" : 'accounts';
         return $this->client->get($endpoint, [], true);
     }
 
     /**
-     * Returns transaction history for an account
+     * Transaction history for an account
      *
-     * @param  string $accountId
-     * @param  array  $pagination (optional)
-     * @return array with transaction history for the account
+     * @param  string     $accountId
+     * @param  array      $pagination (optional)
+     *
+     * @return array      Transaction history for the account
      */
+
     public function accountHistory($accountId, $pagination = [])
     {
         $endpoint = "accounts/{$accountId}/ledger";
         return $this->client->get($endpoint, [], true);
+    }
+
+    /**
+     * Fund holds for an account
+     *
+     * @param  string     $accountId
+     * @param  array      $pagination (optional)
+     *
+     * @return array      Holds for the account
+     */
+
+    public function accountHolds($accountId, $pagination)
+    {
+
+    }
+
+    /**
+     * Place a trade order
+     *
+     * @param  array      $params Too many to list, see https://docs.gdax.com/#place-a-new-order.
+     *                            The array keys must match the parameter name in the documentation
+     *
+     * @return array      Order infromation
+     */
+
+    public function placeOrder($params)
+    {
+
+    }
+
+    /**
+     * Cancels an open order
+     *
+     * @param  string     $orderId Order ID
+     *
+     * @return string     Cancellation success or failure
+     */
+
+    public function cancelOrder($orderId)
+    {
+
+    }
+
+
+    /**
+     * Cancels multiple open orders
+     *
+     * @param  string     $productId (optional) Specify to only cancell orders for a specific product
+     *
+     * @return array      List of IDs of cancelled orders
+     */
+
+    public function cancelAllOrders($productId)
+    {
+
+    }
+
+    /**
+     * List orders
+     *
+     * @param  array      $status     (optional) Specify one or more statuses, or "all".
+     *                                Omitting the status defaults to open orders only.
+     * @param  string     $productId  (optional) Only list orders for a specific product.
+     * @param  array      $pagination (optional)
+     *
+     * @return array      List of orders matching the criteria
+     */
+
+    public function orders($status = [], $productId = null, $pagination = [])
+    {
+
+    }
+
+    /**
+     * Information for an order
+     *
+     * @param  string     $orderId ID of the order
+     *
+     * @return array      Information about the order
+     */
+
+    public function order($orderId)
+    {
+
+    }
+
+    /**
+     * List fills
+     *
+     * @param  string     $orderId    (optional) Limit the fills to a particular order
+     * @param  string     $productId  (optional) Only list fills for a specific product.
+     * @param  array      $pagination (optional)
+     *
+     * @return array      List of fills matching the criteria.
+     */
+
+    public function fills($orderId = null, $productId = null, $pagination = [])
+    {
+
+    }
+
+    /**
+     * Funding records for margin orders
+     *
+     * @param  string  $status     (optional) Defaults to all statuses
+     * @param  array   $pagination
+     *
+     * @return array  List of funding records
+     */
+
+    public function funding($status = null, $pagination = [])
+    {
+
+    }
+
+    /**
+     * Repays funding records. Older gets paid first.
+     *
+     * @param  mixed   integer|float $amount
+     * @param  string  string $currency       Currency symbol (e.g USD)
+     *
+     * @todo   review this method against the API, provide meaningful return values
+     * @return string  result of transaction
+     */
+
+    public function repay($params)
+    {
+
+    }
+
+    /**
+     * Transfer funds between a standard account, and a margin  account
+     * or vice versa.
+     *
+     * @param  array      $params See https://docs.gdax.com/#margin-transfer
+     *
+     * @return array      Result of the transfer transaction.
+     */
+
+    public function marginTransfer($params)
+    {
+
+    }
+
+    /**
+     * Provides an overview of the account
+     *
+     * @return array    Accounts, margins, status, etc.
+     */
+
+    public function position()
+    {
+
+    }
+
+    /**
+     * Closes a position
+     *
+     * @param  bool        $repayOnly
+     * @todo   review this method against the API, provide meaningful return values
+     *
+     * @return string      Status of the transaction
+     */
+
+    public function closePosition($repayOnly)
+    {
+
+    }
+
+    /**
+     * Make a deposit from one of the available payment methods
+     *
+     * @param  array   $params amount, currency, payment method ID. See https://docs.gdax.com/#deposits
+     *
+     * @return array   Information regarding the transaction.
+     */
+
+    public function deposit($params)
+    {
+
+    }
+
+    /**
+     * Transfer funds from Coinbase to GDAX
+     *
+     * @param  array        $params Amount, currency, coinbase account id
+     *
+     * @return array        Transaction information.
+     */
+
+    public function coinbaseTransfer($params)
+    {
+
+    }
+
+    /**
+     * Transfer funds from GDAX to an external account
+     *
+     * @param  array        $params Amount, currency, payment method id
+     *
+     * @return array        Transaction information.
+     */
+
+    public function withdraw($params)
+    {
+
+    }
+
+    /**
+     * Transfer funds from GDAX to Coinbase
+     *
+     * @param  array        $params Amount, currency, coinbase account id
+     *
+     * @return array        Transaction information.
+     */
+
+    public function coinbaseWithdraw($params)
+    {
+
+    }
+
+    /**
+     * Transfer funds from GDAX to a crypto address
+     *
+     * @param  array        $params Amount, currency, crypto address
+     *
+     * @return array        Transaction information.
+     */
+
+    public function withdrawCrypto($params)
+    {
+
+    }
+
+    /**
+     * List of available payment methods
+     *
+     * @return array         Payment methods inormation.
+     */
+
+    public function paymentMethods()
+    {
+
+    }
+
+    /**
+     * List of Coinbase accounts
+     *
+     * @return array         Accounts information.
+     */
+
+    public function coinbaseAccounts()
+    {
+
+    }
+
+    /**
+     * Create a report
+     *
+     * @param  array       $params
+     *
+     * @return array       Report information (not the report itself,
+     *                     which is generated independently of the API call.)
+     */
+
+    public function createReport($params)
+    {
+
+    }
+
+    /**
+     * Status of a report
+     *
+     * @param  string       $reportId
+     *
+     * @return array        Report information. `file_url` has the download URL if the report
+     *                      has been created.
+     */
+
+    public function reportStatus($reportId)
+    {
+
+    }
+
+    /**
+     * Trailing volume for all products for the last 30 days
+     *
+     * @return array         Information of trailing volume. Data is created once a day, and cached.
+     */
+
+    public function trailingVolume()
+    {
+
     }
 
 }

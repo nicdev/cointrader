@@ -193,70 +193,180 @@ class PrivateApi implements PrivateApiClientInterface
 
     }
 
+    /**
+     * Repays funding records. Older gets paid first.
+     *
+     * @param  mixed   integer|float $amount
+     * @param  string  string $currency       Currency symbol (e.g USD)
+     *
+     * @todo   review this method against the API, provide meaningful return values
+     * @return string  result of transaction
+     */
+
     public function repay($params)
     {
 
     }
+
+    /**
+     * Transfer funds between a standard account, and a margin  account
+     * or vice versa.
+     *
+     * @param  array      $params See https://docs.gdax.com/#margin-transfer
+     *
+     * @return array      Result of the transfer transaction.
+     */
 
     public function marginTransfer($params)
     {
 
     }
 
+    /**
+     * Provides an overview of the account
+     *
+     * @return array    Accounts, margins, status, etc.
+     */
+
     public function position()
     {
 
     }
+
+    /**
+     * Closes a position
+     *
+     * @param  bool        $repayOnly
+     * @todo   review this method against the API, provide meaningful return values
+     *
+     * @return string      Status of the transaction
+     */
 
     public function closePosition($repayOnly)
     {
 
     }
 
+    /**
+     * Make a deposit from one of the available payment methods
+     *
+     * @param  array   $params amount, currency, payment method ID. See https://docs.gdax.com/#deposits
+     *
+     * @return array   Information regarding the transaction.
+     */
+
     public function deposit($params)
     {
 
     }
+
+    /**
+     * Transfer funds from Coinbase to GDAX
+     *
+     * @param  array        $params Amount, currency, coinbase account id
+     *
+     * @return array        Transaction information.
+     */
 
     public function coinbaseTransfer($params)
     {
 
     }
 
+    /**
+     * Transfer funds from GDAX to an external account
+     *
+     * @param  array        $params Amount, currency, payment method id
+     *
+     * @return array        Transaction information.
+     */
+
     public function withdraw($params)
     {
 
     }
+
+    /**
+     * Transfer funds from GDAX to Coinbase
+     *
+     * @param  array        $params Amount, currency, coinbase account id
+     *
+     * @return array        Transaction information.
+     */
 
     public function coinbaseWithdraw($params)
     {
 
     }
 
+    /**
+     * Transfer funds from GDAX to a crypto address
+     *
+     * @param  array        $params Amount, currency, crypto address
+     *
+     * @return array        Transaction information.
+     */
+
     public function withdrawCrypto($params)
     {
 
     }
+
+    /**
+     * List of available payment methods
+     *
+     * @return array         Payment methods inormation.
+     */
 
     public function paymentMethods()
     {
 
     }
 
+    /**
+     * List of Coinbase accounts
+     *
+     * @return array         Accounts information.
+     */
+
     public function coinbaseAccounts()
     {
 
     }
+
+    /**
+     * Create a report
+     *
+     * @param  array       $params
+     *
+     * @return array       Report information (not the report itself,
+     *                     which is generated independently of the API call.)
+     */
 
     public function createReport($params)
     {
 
     }
 
+    /**
+     * Status of a report
+     *
+     * @param  string       $reportId
+     *
+     * @return array        Report information. `file_url` has the download URL if the report
+     *                      has been created.
+     */
+
     public function reportStatus($reportId)
     {
 
     }
+
+    /**
+     * Trailing volume for all products for the last 30 days
+     *
+     * @return array         Information of trailing volume. Data is created once a day, and cached.
+     */
 
     public function trailingVolume()
     {

@@ -37,3 +37,79 @@
             Server: cloudflare
             CF-RAY: 3e272f1c5d5382f7-ATL
         body: '[{"created_at":"2018-01-24T04:05:05.507964Z","id":"e0600cb2-6739-4424-af22-4a5954ee8b76","amount":"2004.4199988000000000","type":"order","ref":"98f4ead4-3efe-49f3-90a9-12275c29b3ba"},{"created_at":"2018-01-24T04:02:08.306218Z","id":"63c1500f-689d-4a83-b4d9-ca6471ac4d7a","amount":"999.9999900000000000","type":"order","ref":"a8121ca8-6518-4f88-ba6e-f9c26942b20f"}]'
+-
+    request:
+        method: GET
+        url: 'https://api.gdax.com/accounts/bc0387d7-256c-4bcb-bea1-24c6289c0bff/holds'
+        headers:
+            Host: api.gdax.com
+            Accept-Encoding: null
+            User-Agent: 'GuzzleHttp/6.2.1 curl/7.54.0 PHP/7.1.7'
+            CB-ACCESS-SIGN: NqelF4dg2EYnJN+2q+tCbmjjEnaWhTNpGcf6SCkX1HE=
+            CB-ACCESS-TIMESTAMP: '1516908951'
+            CB-ACCESS-KEY: a9b0e9fe6b3bfe2e0784f3cd460125c9
+            CB-ACCESS-PASSPHRASE: tug-laureate-treat-obit-subside
+            Accept: null
+    response:
+        status:
+            http_version: '1.1'
+            code: '200'
+            message: OK
+        headers:
+            Date: 'Thu, 25 Jan 2018 19:35:51 GMT'
+            Content-Type: 'application/json; charset=utf-8'
+            Content-Length: '364'
+            Connection: keep-alive
+            Set-Cookie: '__cfduid=d71085570afce323b82d2a52913adbf9e1516908951; expires=Fri, 25-Jan-19 19:35:51 GMT; path=/; domain=.gdax.com; HttpOnly'
+            Access-Control-Allow-Headers: 'Content-Type, Accept, cb-session, cb-fp'
+            Access-Control-Allow-Methods: 'GET,POST,DELETE,PUT'
+            Access-Control-Allow-Origin: '*'
+            Access-Control-Expose-Headers: 'cb-before, cb-after'
+            Access-Control-Max-Age: '7200'
+            cb-after: '2018-01-24T04:02:08.306218Z'
+            cb-before: '2018-01-24T04:05:05.507964Z'
+            ETag: 'W/"16c-Yoh8MKumUx8RjRkbdjextJrtSjQ"'
+            Strict-Transport-Security: 'max-age=15552000; includeSubDomains; preload'
+            X-Content-Type-Options: nosniff
+            Expect-CT: 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"'
+            Server: cloudflare
+            CF-RAY: 3e2dad956959383a-ATL
+        body: '[{"created_at":"2018-01-24T04:05:05.507964Z","id":"e0600cb2-6739-4424-af22-4a5954ee8b76","amount":"2004.4199988000000000","type":"order","ref":"98f4ead4-3efe-49f3-90a9-12275c29b3ba"},{"created_at":"2018-01-24T04:02:08.306218Z","id":"63c1500f-689d-4a83-b4d9-ca6471ac4d7a","amount":"999.9999900000000000","type":"order","ref":"a8121ca8-6518-4f88-ba6e-f9c26942b20f"}]'
+-
+    request:
+        method: GET
+        url: 'https://api.gdax.com/accounts/bc0387d7-256c-4bcb-bea1-24c6289c0bff/holds'
+        headers:
+            Host: api.gdax.com
+            Accept-Encoding: null
+            User-Agent: 'GuzzleHttp/6.2.1 curl/7.54.0 PHP/7.1.7'
+            CB-ACCESS-SIGN: ASpNdK5vmxq1h9b21+Y3YB19N808QW9+w3Pici5y8k0=
+            CB-ACCESS-TIMESTAMP: '1516909038'
+            CB-ACCESS-KEY: a9b0e9fe6b3bfe2e0784f3cd460125c9
+            CB-ACCESS-PASSPHRASE: tug-laureate-treat-obit-subside
+            Accept: null
+    response:
+        status:
+            http_version: '1.1'
+            code: '200'
+            message: OK
+        headers:
+            Date: 'Thu, 25 Jan 2018 19:37:18 GMT'
+            Content-Type: 'application/json; charset=utf-8'
+            Content-Length: '364'
+            Connection: keep-alive
+            Set-Cookie: '__cfduid=ddfb6cb04453e598fa3c617f4562eeef01516909038; expires=Fri, 25-Jan-19 19:37:18 GMT; path=/; domain=.gdax.com; HttpOnly'
+            Access-Control-Allow-Headers: 'Content-Type, Accept, cb-session, cb-fp'
+            Access-Control-Allow-Methods: 'GET,POST,DELETE,PUT'
+            Access-Control-Allow-Origin: '*'
+            Access-Control-Expose-Headers: 'cb-before, cb-after'
+            Access-Control-Max-Age: '7200'
+            cb-after: '2018-01-24T04:02:08.306218Z'
+            cb-before: '2018-01-24T04:05:05.507964Z'
+            ETag: 'W/"16c-Yoh8MKumUx8RjRkbdjextJrtSjQ"'
+            Strict-Transport-Security: 'max-age=15552000; includeSubDomains; preload'
+            X-Content-Type-Options: nosniff
+            Expect-CT: 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"'
+            Server: cloudflare
+            CF-RAY: 3e2dafb31ab63870-ATL
+        body: '[{"created_at":"2018-01-24T04:05:05.507964Z","id":"e0600cb2-6739-4424-af22-4a5954ee8b76","amount":"2004.4199988000000000","type":"order","ref":"98f4ead4-3efe-49f3-90a9-12275c29b3ba"},{"created_at":"2018-01-24T04:02:08.306218Z","id":"63c1500f-689d-4a83-b4d9-ca6471ac4d7a","amount":"999.9999900000000000","type":"order","ref":"a8121ca8-6518-4f88-ba6e-f9c26942b20f"}]'

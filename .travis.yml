@@ -12,6 +12,6 @@ before_script:
   - git config --global user.name nicdev
   - git config --global user.email nic@epiclabs.com
 script:
-  - vendor/bin/phpunit
+  - vendor/bin/phpunit --testsuite public
 after_script:
   - mv phpunit.xml phpunit.xml.example

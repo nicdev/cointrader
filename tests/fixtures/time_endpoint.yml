@@ -1,0 +1,33 @@
+
+-
+    request:
+        method: GET
+        url: 'https://api.gdax.com/time'
+        headers:
+            Host: api.gdax.com
+            Accept-Encoding: null
+            User-Agent: 'GuzzleHttp/6.2.1 curl/7.54.0 PHP/7.1.7'
+            Accept: null
+    response:
+        status:
+            http_version: '1.1'
+            code: '200'
+            message: OK
+        headers:
+            Date: 'Thu, 25 Jan 2018 20:11:18 GMT'
+            Content-Type: 'application/json; charset=utf-8'
+            Content-Length: '57'
+            Connection: keep-alive
+            Set-Cookie: '__cfduid=dcececdd06d8e0773f6c6b1ec327037331516911078; expires=Fri, 25-Jan-19 20:11:18 GMT; path=/; domain=.gdax.com; HttpOnly'
+            Access-Control-Allow-Headers: 'Content-Type, Accept, cb-session, cb-fp'
+            Access-Control-Allow-Methods: 'GET,POST,DELETE,PUT'
+            Access-Control-Allow-Origin: '*'
+            Access-Control-Expose-Headers: 'cb-before, cb-after'
+            Access-Control-Max-Age: '7200'
+            ETag: 'W/"39-T2C2gM5KFaRRznLDm+HjLXN80lE"'
+            Strict-Transport-Security: 'max-age=15552000; includeSubDomains; preload'
+            X-Content-Type-Options: nosniff
+            Expect-CT: 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"'
+            Server: cloudflare
+            CF-RAY: 3e2de17e3c7582b5-ATL
+        body: '{"iso":"2018-01-25T20:11:18.165Z","epoch":1516911078.165}'

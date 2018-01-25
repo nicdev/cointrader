@@ -3,7 +3,6 @@
 .env
 phpDocumentor.phar
 phpmd.html
-phpunit.xml
 private-tests/fixtures/*
 !private-tests/fixtures/.gitkeep
 phpunit.private.xml

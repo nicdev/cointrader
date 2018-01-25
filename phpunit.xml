@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="vendor/autoload.php"
+    stopOnFailure="false"
+    colors="true">
+    <testsuites>
+        <testsuite name="public">
+            <directory suffix="Test.php">./tests/</directory>
+        </testsuite>
+        <testsuite name="private">
+            <directory suffix="Test.php">./private-tests/</directory>
+        </testsuite>
+    </testsuites>
+    <php>
+      <const name="ENDPOINT_URL" value="https://api.gdax.com"/>
+      <const name="USD_ACCOUNT" value=""/>
+      <const name="ETH_ACCOUNT" value=""/>
+      <const name="API_KEY" value=""/>
+      <const name="API_SECRET" value=""/>
+      <const name="API_PASSPHRASE" value=""/>
+    </php>
+</phpunit>

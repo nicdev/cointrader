@@ -56,7 +56,7 @@ class ApiCaller implements ApiCallerInterface
     {
         $headers = self::makeHeaders(self::makeSignature('GET', $endpoint));
         $params = array_merge($query, $headers);
-
+        
         return $this->request('GET', $endpoint, $params);
     }
 
@@ -72,7 +72,7 @@ class ApiCaller implements ApiCallerInterface
     {
         $headers = self::makeHeaders(self::makeSignature('POST', $endpoint, $payload));
         $params = array_merge($payload, $headers);
-        
+
         return $this->request('POST', $endpoint, $params);
     }
 

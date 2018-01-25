@@ -62,7 +62,7 @@ class PrivateApi implements PrivateApiClientInterface
     public function tradingAccounts($accountId = null)
     {
         $endpoint = $accountId ? "accounts/{$accountId}" : 'accounts';
-        return $this->client->get($endpoint, [], true);
+        return $this->client->getPrivate($endpoint, [], true);
     }
 
     /**
@@ -77,7 +77,7 @@ class PrivateApi implements PrivateApiClientInterface
     public function accountHistory($accountId, $pagination = [])
     {
         $endpoint = "accounts/{$accountId}/ledger";
-        return $this->client->get($endpoint, [], true);
+        return $this->client->getPrivate($endpoint, []);
     }
 
     /**
@@ -89,9 +89,10 @@ class PrivateApi implements PrivateApiClientInterface
      * @return array      Holds for the account
      */
 
-    public function accountHolds($accountId, $pagination)
+    public function accountHolds($accountId, $pagination = [])
     {
-
+        $endpoint = "accounts/{$accountId}/holds";
+        return $this->client->getPrivate($endpoint, []);
     }
 
     /**

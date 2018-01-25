@@ -24,7 +24,7 @@ class PublicApiTest extends TestCase
 
     public function test_it_makes_a_call_to_order_book() {
       VCR::turnOn();
-      VCR::insertCassette('orderbook.yml');
+      VCR::insertCassette('orderbook_endpoint.yml');
 
       $this->publicApi = new Cointrader\PublicApi(new ApiCaller);
 

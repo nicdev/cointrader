@@ -5,3 +5,4 @@
 .env
 phpDocumentor.phar
 phpmd.html
+phpunit.xml

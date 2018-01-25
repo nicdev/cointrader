@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="vendor/autoload.php"
+    stopOnFailure="false"
+    colors="true">
+    <testsuites>
+        <testsuite name="Cointrader Test Suite">
+            <directory suffix="Test.php">./tests/</directory>
+        </testsuite>
+    </testsuites>
+    <php>
+      <const name="ENDPOINT_URL" value="https://api.gdax.com"/>
+      <const name="USD_ACCOUNT" value="a1b2c3d4-e5f6-g7h8-i9j0-ABCDEFGHIJKL"/>
+      <const name="API_KEY" value="oZVH5COdTLivJkDigodb14rHZk0YL7gg"/>
+      <const name="API_SECRET" value="XX+oZVH5COdTLivJkDigodb14rHZk0Y+oZVH5COdTLivJkDigodb14rHZk0Y/oZVH5COdTLivJkDigodb14rHZk0Y=="/>
+      <const name="API_PASSPHRASE" value="very-good-passphrase"/>
+    </php>
+</phpunit>

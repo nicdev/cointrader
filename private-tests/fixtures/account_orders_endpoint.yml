@@ -1,0 +1,75 @@
+
+-
+    request:
+        method: GET
+        url: 'https://api.gdax.com/orders'
+        headers:
+            Host: api.gdax.com
+            Accept-Encoding: null
+            User-Agent: 'GuzzleHttp/6.2.1 curl/7.54.0 PHP/7.1.7'
+            CB-ACCESS-SIGN: lrWbGMPOfDgOFRpnwZNSoIv50miYFlcLTg34Qe/NuU8=
+            CB-ACCESS-TIMESTAMP: '1516963954'
+            CB-ACCESS-KEY: ''
+            CB-ACCESS-PASSPHRASE: ''
+            Accept: null
+    response:
+        status:
+            http_version: '1.1'
+            code: '401'
+            message: Unauthorized
+        headers:
+            Date: 'Fri, 26 Jan 2018 10:52:34 GMT'
+            Content-Type: 'application/json; charset=utf-8'
+            Content-Length: '46'
+            Connection: keep-alive
+            Set-Cookie: '__cfduid=d88e39dd92b863b6b2877d826029bb00b1516963954; expires=Sat, 26-Jan-19 10:52:34 GMT; path=/; domain=.gdax.com; HttpOnly'
+            Access-Control-Allow-Headers: 'Content-Type, Accept, cb-session, cb-fp'
+            Access-Control-Allow-Methods: 'GET,POST,DELETE,PUT'
+            Access-Control-Allow-Origin: '*'
+            Access-Control-Expose-Headers: 'cb-before, cb-after'
+            Access-Control-Max-Age: '7200'
+            ETag: 'W/"2e-Tq+qj+YwiKSlwydKTSRXz2AtQww"'
+            Strict-Transport-Security: 'max-age=15552000; includeSubDomains; preload'
+            X-Content-Type-Options: nosniff
+            Expect-CT: 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"'
+            Server: cloudflare
+            CF-RAY: 3e32ec6b7c0982a9-ATL
+        body: '{"message":"CB-ACCESS-KEY header is required"}'
+-
+    request:
+        method: GET
+        url: 'https://api.gdax.com/orders'
+        headers:
+            Host: api.gdax.com
+            Accept-Encoding: null
+            User-Agent: 'GuzzleHttp/6.2.1 curl/7.54.0 PHP/7.1.7'
+            CB-ACCESS-SIGN: UuThQU2zc+mK0wKuwBWiXexeAWXB/yMCEEYbGYcXb10=
+            CB-ACCESS-TIMESTAMP: '1516963979'
+            CB-ACCESS-KEY: a9b0e9fe6b3bfe2e0784f3cd460125c9
+            CB-ACCESS-PASSPHRASE: tug-laureate-treat-obit-subside
+            Accept: null
+    response:
+        status:
+            http_version: '1.1'
+            code: '200'
+            message: OK
+        headers:
+            Date: 'Fri, 26 Jan 2018 10:52:59 GMT'
+            Content-Type: 'application/json; charset=utf-8'
+            Content-Length: '1457'
+            Connection: keep-alive
+            Set-Cookie: '__cfduid=d078a07fe2273cf175cf67849dd4b89c11516963979; expires=Sat, 26-Jan-19 10:52:59 GMT; path=/; domain=.gdax.com; HttpOnly'
+            Access-Control-Allow-Headers: 'Content-Type, Accept, cb-session, cb-fp'
+            Access-Control-Allow-Methods: 'GET,POST,DELETE,PUT'
+            Access-Control-Allow-Origin: '*'
+            Access-Control-Expose-Headers: 'cb-before, cb-after'
+            Access-Control-Max-Age: '7200'
+            cb-after: '2017-12-25T19:34:47.330512Z'
+            cb-before: '2018-01-24T04:05:05.486233Z'
+            ETag: 'W/"5b1-neRjgjFxKAmV1rJfHh2+Pqf6RHg"'
+            Strict-Transport-Security: 'max-age=15552000; includeSubDomains; preload'
+            X-Content-Type-Options: nosniff
+            Expect-CT: 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"'
+            Server: cloudflare
+            CF-RAY: 3e32ed0a7b148315-ATL
+        body: '[{"id":"98f4ead4-3efe-49f3-90a9-12275c29b3ba","price":"920.00000000","size":"2.17871739","product_id":"ETH-USD","side":"buy","stp":"dc","type":"limit","time_in_force":"GTC","post_only":true,"created_at":"2018-01-24T04:05:05.486233Z","fill_fees":"0.0000000000000000","filled_size":"0.00000000","executed_value":"0.0000000000000000","status":"open","settled":false},{"id":"a8121ca8-6518-4f88-ba6e-f9c26942b20f","price":"165.00000000","size":"6.06060600","product_id":"LTC-USD","side":"buy","stp":"dc","type":"limit","time_in_force":"GTC","post_only":true,"created_at":"2018-01-24T04:02:08.286285Z","fill_fees":"0.0000000000000000","filled_size":"0.00000000","executed_value":"0.0000000000000000","status":"open","settled":false},{"id":"0ccc84cb-733d-48be-95f5-56f5c56f8f5a","price":"15000.00000000","size":"0.13593297","product_id":"BTC-USD","side":"sell","stp":"dc","type":"limit","time_in_force":"GTC","post_only":true,"created_at":"2018-01-13T01:03:27.196555Z","fill_fees":"0.0000000000000000","filled_size":"0.00000000","executed_value":"0.0000000000000000","status":"open","settled":false},{"id":"2486a0b6-1103-4e06-a66e-60a3fcf2b241","price":"340.00000000","size":"7.00000000","product_id":"LTC-USD","side":"sell","stp":"dc","type":"limit","time_in_force":"GTC","post_only":true,"created_at":"2017-12-25T19:34:47.330512Z","fill_fees":"0.0000000000000000","filled_size":"0.00000000","executed_value":"0.0000000000000000","status":"open","settled":false}]'

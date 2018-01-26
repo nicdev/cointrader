@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="vendor/autoload.php"
+    stopOnFailure="false"
+    colors="true">
+    <testsuites>
+        <testsuite name="private">
+            <directory suffix="Test.php">./private-tests/</directory>
+        </testsuite>
+    </testsuites>
+    <php>
+      <const name="ENDPOINT_URL" value="https://api.gdax.com"/>
+      <const name="USD_ACCOUNT" value="bc0387d7-256c-4bcb-bea1-24c6289c0bff"/>
+      <const name="ETH_ACCOUNT" value="bc0387d7-256c-4bcb-bea1-24c6289c0bff"/>
+      <const name="API_KEY" value="a9b0e9fe6b3bfe2e0784f3cd460125c9"/>
+      <const name="API_SECRET" value="SQ+3X7wlRz3zQz0ITU3HyNyD650m6KB+XW9tzwURsvCSRCW1s36b77Cb/slA7psGdObUshBAj4HhSQsIhkHn+g=="/>
+      <const name="API_PASSPHRASE" value="tug-laureate-treat-obit-subside"/>
+    </php>
+</phpunit>

@@ -149,7 +149,7 @@ class PrivateApi implements PrivateApiClientInterface
 
     public function orders($status = [], $productId = null, $pagination = [])
     {
-
+        return $this->client->getPrivate('orders', []);
     }
 
     /**

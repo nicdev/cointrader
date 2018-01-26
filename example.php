@@ -54,4 +54,8 @@ $apiClient = new Cointrader\PrivateApi(new Cointrader\ApiCaller, getenv('API_KEY
 // Get a single account
 //print_r($apiClient->accounts('XXXXXXXX-YYYY-ZZZZ-1234-123456789ABC'));
 
+// Get account history
 //print_r($apiClient->accountHistory('XXXXXXXX-YYYY-ZZZZ-1234-123456789ABC'));
+
+// Get holds for the an account
+//print_r($apiClient->accountHolds('XXXXXXXX-YYYY-ZZZZ-1234-123456789ABC'));

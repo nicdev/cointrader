@@ -9,6 +9,7 @@ class PrivateApiTest extends TestCase
 
     public function test_it_makes_a_call_to_accounts() {
 
+      VCR::configure()->setCassettePath('private-tests/fixtures');
       VCR::turnOn();
       VCR::insertCassette('accounts_endpoint.yml');
 
@@ -23,7 +24,7 @@ class PrivateApiTest extends TestCase
     }
 
     public function test_it_makes_a_call_to_account_holds() {
-
+      VCR::configure()->setCassettePath('private-tests/fixtures');
       VCR::turnOn();
       VCR::insertCassette('account_holds_endpoint.yml');
 

@@ -108,7 +108,7 @@ class PrivateApi implements PrivateApiClientInterface
 
     public function placeOrder($params)
     {
-        $endpoint = "orders";
+        $endpoint = 'orders';
         return $this->client->postPrivate($endpoint, $params);
     }
 
@@ -122,7 +122,8 @@ class PrivateApi implements PrivateApiClientInterface
 
     public function cancelOrder($orderId)
     {
-
+        $endpoint = "orders/{$orderId}";
+        return $this->client->deletePrivate($endpoint);
     }
 
 
@@ -134,9 +135,10 @@ class PrivateApi implements PrivateApiClientInterface
      * @return array      List of IDs of cancelled orders
      */
 
-    public function cancelAllOrders($productId)
+    public function cancelAllOrders($productId = null)
     {
-
+        $endpoint = "orders/?{$productId}";
+        return $this->client->deletePrivate($endpoint);
     }
 
     /**

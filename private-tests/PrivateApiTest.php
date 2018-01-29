@@ -46,7 +46,6 @@ class PrivateApiTest extends TestCase
         $this->privateApi = new Cointrader\PrivateApi(new Cointrader\ApiCaller, API_KEY, API_SECRET, API_PASSPHRASE);
 
         $orderParams = [
-            // 'client_oid' => 'test order through PHPUnit',
             'type' => 'limit',
             'side' => 'buy',
             'product_id' => 'ETH-USD',
@@ -55,14 +54,43 @@ class PrivateApiTest extends TestCase
             'time_in_force' => 'GTC'
         ];
 
-        // $orderParams = [
-        //     "size" => "0.01",
-        //     "price" => "0.100",
-        //     "side" => "buy",
-        //     "product_id" => "BTC-USD"
-        // ];
-
         $order = $this->privateApi->placeOrder($orderParams);
+
+        VCR::eject();
+        VCR::turnOff();
+
+        $this->assertTrue(is_array($order));
+
+        return $order['id'];
+    }
+
+    /**
+     * @depends test_it_places_a_buy_limit_order
+     */
+
+    public function test_it_cancels_an_order($orderId) {
+        VCR::configure()->setCassettePath('private-tests/fixtures');
+        VCR::turnOn();
+        VCR::insertCassette('account_delete_order_endpoint.yml');
+
+        $this->privateApi = new Cointrader\PrivateApi(new Cointrader\ApiCaller, API_KEY, API_SECRET, API_PASSPHRASE);
+
+        $order = $this->privateApi->cancelOrder($orderId);
+
+        VCR::eject();
+        VCR::turnOff();
+
+        $this->assertTrue(is_array($order));
+    }
+
+    public function test_it_cancels_all_eth_orders() {
+        VCR::configure()->setCassettePath('private-tests/fixtures');
+        VCR::turnOn();
+        VCR::insertCassette('account_delete_all_eth_orders_endpoint.yml');
+
+        $this->privateApi = new Cointrader\PrivateApi(new Cointrader\ApiCaller, API_KEY, API_SECRET, API_PASSPHRASE);
+
+        $order = $this->privateApi->cancelAllOrders('ETH-USD');
 
         VCR::eject();
         VCR::turnOff();

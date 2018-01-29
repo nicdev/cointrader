@@ -74,29 +74,29 @@ class ApiCaller implements ApiCallerInterface
 
     public function post($endpoint, array $payload)
     {
-        $multipart = self::makeMultipart($payload);
-        return $this->request('POST', $endpoint, $params);
+        $payload = ['body' => json_encode($payload)];
+        return $this->request('POST', $endpoint, $payload);
     }
 
     public function postPrivate($endpoint, array $payload)
     {
         $headers = self::makeHeaders(self::makeSignature('POST', $endpoint, $payload));
-        //$multipart = self::makeMultipart($payload);
         $payload = ['body' => json_encode($payload)];
-        //$params = array_merge($multipart, $headers);
         $params = array_merge($payload, $headers);
 
         return $this->request('POST', $endpoint, $params);
     }
 
-    public function delete($endpoint, $private = false)
+    public function delete($endpoint)
     {
-        if($private) {
-            $params = self::makeHeaders(self::makeSignature('DELETE', $endpoint));
-        } else {
-            $params = null;
-        }
-        return $this->request('DELETE', $endpoint, $params);
+        return $this->request('DELETE', $endpoint, null);
+    }
+
+    public function deletePrivate($endpoint)
+    {
+        $headers = self::makeHeaders(self::makeSignature('DELETE', $endpoint, $payload));
+
+        return $this->request('DELETE', $endpoint, $headers);
     }
 
     public function request($method, $endpoint, $params)

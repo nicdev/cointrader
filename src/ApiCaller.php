@@ -49,15 +49,6 @@ class ApiCaller implements ApiCallerInterface
         ];
     }
 
-    protected function makeMultipart($payload) {
-        $formattedPayload = [];
-        foreach($payload as $name => $contents) {
-            $formattedPayload[] = ['name' => $name, 'contents' => $contents];
-        }
-
-        return ['multipart' => $formattedPayload];
-    }
-
     public function get($endpoint, array $query)
     {
         return $this->request('GET', $endpoint, $query);

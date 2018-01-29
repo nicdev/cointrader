@@ -23,7 +23,7 @@ interface PrivateApiClientInterface
 
     public function cancelAllOrders($productId);
 
-    public function orders($status, $productId);
+    public function orders($status, $productId, $pagination);
 
     public function order($orderId);
 

@@ -48,7 +48,10 @@ class PrivateApi implements PrivateApiClientInterface
         $this->secret = $secret;
         $this->passphrase = $passphrase;
         $this->client = $apiCaller;
-        $this->client->init(self::ENDPOINT_URL, ['key' => $this->key, 'secret' => $this->secret, 'passphrase' => $this->passphrase]);
+        $this->client->init(
+            self::ENDPOINT_URL,
+            ['key' => $this->key, 'secret' => $this->secret, 'passphrase' => $this->passphrase]
+        );
     }
 
     /**
@@ -146,15 +149,26 @@ class PrivateApi implements PrivateApiClientInterface
      *
      * @param  array      $status     (optional) Specify one or more statuses, or "all".
      *                                Omitting the status defaults to open orders only.
+     * @todo              Allow passing multiple statuses
      * @param  string     $productId  (optional) Only list orders for a specific product.
      * @param  array      $pagination (optional)
      *
      * @return array      List of orders matching the criteria
      */
 
-    public function orders($status = [], $productId = null, $pagination = [])
+    public function orders($status = null, $productId = null, $pagination = [])
     {
-        return $this->client->getPrivate('orders', []);
+        if ($status) {
+            $query['status'] = $status;
+        }
+
+        if ($productId) {
+            $query['product_id'] = $productId;
+        }
+
+        $query = array_merge($query, $pagination);
+
+        return $this->client->getPrivate('orders', $query);
     }
 
     /**

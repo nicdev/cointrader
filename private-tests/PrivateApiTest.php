@@ -13,6 +13,7 @@ class PrivateApiTest extends TestCase
     {
         VCR::configure()->setCassettePath('private-tests/fixtures');
         VCR::turnOn();
+        $this->privateApi = new PrivateApi(new ApiCaller, API_KEY, API_SECRET, API_PASSPHRASE);
     }
 
     protected function tearDown()
@@ -21,32 +22,27 @@ class PrivateApiTest extends TestCase
         VCR::turnOff();
     }
 
-    public function testItMakesACallToAccounts()
+    public function testItGetsAccounts()
     {
         VCR::insertCassette('accounts_endpoint.yml');
 
-        $this->privateApi = new PrivateApi(new ApiCaller, API_KEY, API_SECRET, API_PASSPHRASE);
         $accounts = $this->privateApi->tradingAccounts();
 
         $this->assertTrue(is_array($accounts));
     }
 
-    public function test_it_makes_a_call_to_account_holds()
+    public function testItGetsAccountHolds()
     {
         VCR::insertCassette('account_holds_endpoint.yml');
-
-        $this->privateApi = new PrivateApi(new ApiCaller, API_KEY, API_SECRET, API_PASSPHRASE);
 
         $products = $this->privateApi->accountHolds(USD_ACCOUNT);
 
         $this->assertTrue(is_array($products));
     }
 
-    public function test_it_places_a_buy_limit_order()
+    public function testItPlacesABuyLimitOrder()
     {
         VCR::insertCassette('account_place_order_endpoint.yml');
-
-        $this->privateApi = new PrivateApi(new ApiCaller, API_KEY, API_SECRET, API_PASSPHRASE);
 
         $orderParams = [
             'type' => 'limit',
@@ -66,47 +62,65 @@ class PrivateApiTest extends TestCase
 
 
     /**
-     * @depends test_it_places_a_buy_limit_order
+     * @depends testItPlacesABuyLimitOrder
      */
 
-    public function test_it_gets_order_info()
+    public function testItGetsOrderInfo($orderId)
     {
         VCR::insertCassette('account_get_order_info_endpoint.yml');
-
-        $this->privateApi = new PrivateApi(new ApiCaller, API_KEY, API_SECRET, API_PASSPHRASE);
 
         $order = $this->privateApi->order($orderId);
 
         $this->assertTrue(is_array($order));
     }
 
+
     /**
-     * @depends test_it_places_a_buy_limit_order
+     * @depends testItPlacesABuyLimitOrder
      */
 
-    public function test_it_cancels_an_order($orderId)
+    public function testItGetsAllOrdersInfo()
+    {
+        VCR::insertCassette('account_get_all_orders_info_endpoint.yml');
+
+        $orders = $this->privateApi->orders('all');
+
+        $this->assertTrue(is_array($orders));
+    }
+
+    /**
+     * @depends testItPlacesABuyLimitOrder
+     */
+
+    public function testItCancelsAnOrder($orderId)
     {
         VCR::insertCassette('account_delete_order_endpoint.yml');
 
-        $this->privateApi = new PrivateApi(new ApiCaller, API_KEY, API_SECRET, API_PASSPHRASE);
-
         $order = $this->privateApi->cancelOrder($orderId);
-
-
 
         $this->assertTrue(is_array($order));
     }
 
-    public function test_it_cancels_all_eth_orders()
+    /**
+     * @depends testItPlacesABuyLimitOrder
+     */
+
+    public function testItCancelsAllEthOrders()
     {
         VCR::insertCassette('account_delete_all_eth_orders_endpoint.yml');
 
-        $this->privateApi = new PrivateApi(new ApiCaller, API_KEY, API_SECRET, API_PASSPHRASE);
-
         $order = $this->privateApi->cancelAllOrders('ETH-USD');
-
-
 
         $this->assertTrue(is_array($order));
     }
+
+    public function testItGetsOrderFills()
+    {
+        VCR::insertCassette('order_fills_endpoint.yml');
+
+        $fills = $this->provateApi->fills();
+
+        $this->assertTrue(is_array($fills));
+    }
+
 }

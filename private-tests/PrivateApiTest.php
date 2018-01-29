@@ -3,8 +3,8 @@
 namespace CointraderTest;
 
 use PHPUnit\Framework\TestCase;
-use \Cointrader\ApiCaller;
-use \Cointrader\PrivateApi;
+use Cointrader\ApiCaller;
+use Cointrader\PrivateApi;
 use VCR\VCR;
 
 class PrivateApiTest extends TestCase

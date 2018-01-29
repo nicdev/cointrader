@@ -96,17 +96,20 @@ class PrivateApi implements PrivateApiClientInterface
     }
 
     /**
-     * Place a trade order
+     * Place a trade order.
      *
      * @param  array      $params Too many to list, see https://docs.gdax.com/#place-a-new-order.
      *                            The array keys must match the parameter name in the documentation
+     *
+     * @todo              Analyze order parameters, and prevent placement if invalid
      *
      * @return array      Order infromation
      */
 
     public function placeOrder($params)
     {
-
+        $endpoint = "orders";
+        return $this->client->postPrivate($endpoint, $params);
     }
 
     /**

@@ -28,6 +28,7 @@ class ApiCaller implements ApiCallerInterface
     protected function makeSignature($method, $endpoint, $body = null)
     {
         $body = is_array($body) ? json_encode($body) : $body;
+
         $requestPath = trim(substr($endpoint, 0, 1) === '/' ? $endpoint : '/' . $endpoint);
         $timestamp = time();
         $seed = $timestamp.$method.$requestPath.$body;
@@ -37,14 +38,24 @@ class ApiCaller implements ApiCallerInterface
 
     protected function makeHeaders($signature)
     {
-        return
-        ['headers' => [
-          'CB-ACCESS-SIGN' => $signature,
-          'CB-ACCESS-TIMESTAMP' => time(),
-          'CB-ACCESS-KEY' => $this->key,
-          'CB-ACCESS-PASSPHRASE' => $this->passphrase
-        ]
+        return [
+            'headers' => [
+              'CB-ACCESS-SIGN' => $signature,
+              'CB-ACCESS-TIMESTAMP' => time(),
+              'CB-ACCESS-KEY' => $this->key,
+              'CB-ACCESS-PASSPHRASE' => $this->passphrase,
+              'Content-Type' => 'application/json'
+            ]
         ];
+    }
+
+    protected function makeMultipart($payload) {
+        $formattedPayload = [];
+        foreach($payload as $name => $contents) {
+            $formattedPayload[] = ['name' => $name, 'contents' => $contents];
+        }
+
+        return ['multipart' => $formattedPayload];
     }
 
     public function get($endpoint, array $query)
@@ -56,21 +67,23 @@ class ApiCaller implements ApiCallerInterface
     {
         $headers = self::makeHeaders(self::makeSignature('GET', $endpoint));
         $params = array_merge($query, $headers);
-        
+
         return $this->request('GET', $endpoint, $params);
     }
 
 
     public function post($endpoint, array $payload)
     {
-        $payload;
-
-        return $this->request('POST', $endpoint, $payload);
+        $multipart = self::makeMultipart($payload);
+        return $this->request('POST', $endpoint, $params);
     }
 
     public function postPrivate($endpoint, array $payload)
     {
         $headers = self::makeHeaders(self::makeSignature('POST', $endpoint, $payload));
+        //$multipart = self::makeMultipart($payload);
+        $payload = ['body' => json_encode($payload)];
+        //$params = array_merge($multipart, $headers);
         $params = array_merge($payload, $headers);
 
         return $this->request('POST', $endpoint, $params);

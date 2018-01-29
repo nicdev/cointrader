@@ -64,6 +64,26 @@ class PrivateApiTest extends TestCase
         return $order['id'];
     }
 
+
+    /**
+     * @depends test_it_places_a_buy_limit_order
+     */
+
+    public function test_it_gets_order_info() {
+        VCR::configure()->setCassettePath('private-tests/fixtures');
+        VCR::turnOn();
+        VCR::insertCassette('account_get_order_info_endpoint.yml');
+
+        $this->privateApi = new Cointrader\PrivateApi(new Cointrader\ApiCaller, API_KEY, API_SECRET, API_PASSPHRASE);
+
+        $order = $this->privateApi->order($orderId);
+
+        VCR::eject();
+        VCR::turnOff();
+
+        $this->assertTrue(is_array($order));
+    }
+
     /**
      * @depends test_it_places_a_buy_limit_order
      */

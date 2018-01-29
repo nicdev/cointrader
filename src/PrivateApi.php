@@ -167,7 +167,8 @@ class PrivateApi implements PrivateApiClientInterface
 
     public function order($orderId)
     {
-
+        $endpoint = "orders/{$orderId}";
+        return $this->client->getPrivate($endpoint, []);
     }
 
     /**

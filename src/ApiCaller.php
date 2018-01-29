@@ -71,7 +71,6 @@ class ApiCaller implements ApiCallerInterface
         return $this->request('GET', $endpoint, $params);
     }
 
-
     public function post($endpoint, array $payload)
     {
         $payload = ['body' => json_encode($payload)];

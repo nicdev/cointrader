@@ -34,7 +34,7 @@ class PublicApi implements PublicApiClientInterface
 
     public function products()
     {
-        return $this->client->get('products', []);
+        return $this->client->get('products');
     }
 
     /**
@@ -61,7 +61,7 @@ class PublicApi implements PublicApiClientInterface
 
     public function ticker($product)
     {
-        return $this->client->get("products/{$product}/ticker", []);
+        return $this->client->get("products/{$product}/ticker");
     }
 
     /**
@@ -73,7 +73,7 @@ class PublicApi implements PublicApiClientInterface
      * @return array    List of trades.
      */
 
-    public function trades($product, array $pagination = [])
+    public function trades($product, array $pagination)
     {
         return $this->client->get("products/{$product}/trades", $pagination);
     }
@@ -94,9 +94,9 @@ class PublicApi implements PublicApiClientInterface
         return $this->client->get(
             "products/{$params['product']}/candles",
             [
-              'start' => $params['start'],
-              'end' => $params['end'],
-              'granularity' => $params['granularity']
+              'start' => isset($params['start']) ? $params['start'] : null,
+              'end' => isset($params['end']) ? $params['end'] : date('c'),
+              'granularity' => isset($params['granularity']) ? $params['granularity'] : 60
             ]
         );
     }
@@ -111,7 +111,7 @@ class PublicApi implements PublicApiClientInterface
 
     public function stats($product)
     {
-        return $this->client->get("products/{$product}/stats", []);
+        return $this->client->get("products/{$product}/stats");
     }
 
     /**
@@ -122,7 +122,7 @@ class PublicApi implements PublicApiClientInterface
 
     public function currencies()
     {
-        return $this->client->get('currencies', []);
+        return $this->client->get('currencies');
     }
 
     /**
@@ -133,6 +133,6 @@ class PublicApi implements PublicApiClientInterface
 
     public function time()
     {
-        return $this->client->get('time', []);
+        return $this->client->get('time');
     }
 }

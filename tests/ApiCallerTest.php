@@ -1,5 +1,7 @@
 <?php
 
+namespace CointraderTest;
+
 use PHPUnit\Framework\TestCase;
 use Cointrader\ApiCaller;
 use VCR\VCR;
@@ -9,25 +11,29 @@ class ApiCallerTest extends TestCase
 
     protected function setUp()
     {
-        $this->public_endpoint = 'https://api.gdax.com';
+        VCR::configure()->setCassettePath('tests/fixtures');
+        VCR::configure()->setMode('once');
+        VCR::configure()->enableRequestMatchers(['method', 'url', 'host']);
+        VCR::turnOn();
+
+        $this->apiCaller = new ApiCaller;
+        $this->apiCaller->init(ENDPOINT_URL);
     }
 
-    public function test_it_makes_a_get_request_to_coinbase_api_time_endpoint() {
-
-      VCR::turnOn();
-      VCR::insertCassette('time_endpoint.yml');
-
-      $apiCaller = new ApiCaller;
-      $apiCaller->init($this->public_endpoint);
-
-      $time = $apiCaller->get('time', []);
-
-      $this->assertTrue(is_array($time));
-      $this->assertArrayHasKey('iso', $time);
-      $this->assertArrayHasKey('epoch', $time);
-
-      VCR::eject();
-      VCR::turnOff();
-
+    protected function tearDown()
+    {
+        VCR::eject();
+        VCR::turnOff();
     }
-  }
+
+    public function testGetsApiTime()
+    {
+        VCR::insertCassette('time_endpoint.yml');
+
+        $time = $this->apiCaller->get('time', []);
+
+        $this->assertTrue(is_array($time));
+        $this->assertArrayHasKey('iso', $time);
+        $this->assertArrayHasKey('epoch', $time);
+    }
+}

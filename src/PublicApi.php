@@ -94,9 +94,9 @@ class PublicApi implements PublicApiClientInterface
         return $this->client->get(
             "products/{$params['product']}/candles",
             [
-              'start' => $params['start'],
-              'end' => $params['end'] ?: date('c'),
-              'granularity' => $params['granularity'] ?: 60
+              'start' => isset($params['start']) ? $params['start'] : null,
+              'end' => isset($params['end']) ? $params['end'] : date('c'),
+              'granularity' => isset($params['granularity']) ? $params['granularity'] : 60
             ]
         );
     }

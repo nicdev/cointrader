@@ -29,7 +29,7 @@ interface PrivateApiClientInterface
 
     public function fills($orderId, $productId, $pagination);
 
-    public function funding($status, $pagination);
+    public function fundings($status, $pagination);
 
     public function repay($params);
 

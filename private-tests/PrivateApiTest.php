@@ -12,7 +12,10 @@ class PrivateApiTest extends TestCase
     protected function setUp()
     {
         VCR::configure()->setCassettePath('private-tests/fixtures');
+        VCR::configure()->setMode('once');
+        VCR::configure()->enableRequestMatchers(['method', 'url', 'host']);
         VCR::turnOn();
+        
         $this->privateApi = new PrivateApi(new ApiCaller, API_KEY, API_SECRET, API_PASSPHRASE);
     }
 
@@ -118,9 +121,18 @@ class PrivateApiTest extends TestCase
     {
         VCR::insertCassette('order_fills_endpoint.yml');
 
-        $fills = $this->provateApi->fills();
+        $fills = $this->privateApi->fills();
 
         $this->assertTrue(is_array($fills));
+    }
+
+    public function testItGetsFundings()
+    {
+        VCR::insertCassette('fundings_endpoint.yml');
+
+        $fundings = $this->privateApi->fundings();
+
+        $this->assertTrue(is_array($fundings));
     }
 
 }

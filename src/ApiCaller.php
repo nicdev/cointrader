@@ -49,12 +49,12 @@ class ApiCaller implements ApiCallerInterface
         ];
     }
 
-    public function get($endpoint, array $query)
+    public function get($endpoint, array $query = [])
     {
         return $this->request('GET', $endpoint, $query);
     }
 
-    public function getPrivate($endpoint, array $query)
+    public function getPrivate($endpoint, array $query = [])
     {
         $headers = self::makeHeaders(self::makeSignature('GET', $endpoint));
         $params = array_merge($query, $headers);

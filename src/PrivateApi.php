@@ -111,8 +111,7 @@ class PrivateApi implements PrivateApiClientInterface
 
     public function placeOrder($params)
     {
-        $endpoint = 'orders';
-        return $this->client->postPrivate($endpoint, $params);
+        return $this->client->postPrivate('orders', $params);
     }
 
     /**
@@ -242,7 +241,7 @@ class PrivateApi implements PrivateApiClientInterface
 
     public function repay($params)
     {
-
+        throw new \Exception("Method not implemented");
     }
 
     /**
@@ -256,7 +255,7 @@ class PrivateApi implements PrivateApiClientInterface
 
     public function marginTransfer($params)
     {
-
+        throw new \Exception("Method not implemented");
     }
 
     /**
@@ -267,7 +266,7 @@ class PrivateApi implements PrivateApiClientInterface
 
     public function position()
     {
-
+        return $this->client->getPrivate('position', []);
     }
 
     /**
@@ -279,9 +278,11 @@ class PrivateApi implements PrivateApiClientInterface
      * @return string      Status of the transaction
      */
 
-    public function closePosition($repayOnly)
+    public function closePosition($repayOnly = false)
     {
+        $query = ['repay_only' => $repayOnly];
 
+        return $this->client->getPrivate('position/close', $query);
     }
 
     /**
@@ -294,7 +295,7 @@ class PrivateApi implements PrivateApiClientInterface
 
     public function deposit($params)
     {
-
+        return $this->client->postPrivate('deposits/payment-method', $params);
     }
 
     /**
@@ -307,20 +308,21 @@ class PrivateApi implements PrivateApiClientInterface
 
     public function coinbaseTransfer($params)
     {
-
+        return $this->client->postPrivate('/deposits/coinbase-account', $params);
     }
 
     /**
      * Transfer funds from GDAX to an external account
      *
      * @param  array        $params Amount, currency, payment method id
+     * @todo                Write test
      *
      * @return array        Transaction information.
      */
 
     public function withdraw($params)
     {
-
+        return $this->client->postPrivate('withdrawals/payment-method', $params);
     }
 
     /**
@@ -333,31 +335,32 @@ class PrivateApi implements PrivateApiClientInterface
 
     public function coinbaseWithdraw($params)
     {
-
+        return $this->client->postPrivate('withdrawals/coinbase-account', $params);
     }
 
     /**
      * Transfer funds from GDAX to a crypto address
      *
      * @param  array        $params Amount, currency, crypto address
+     * @todo                Write test
      *
      * @return array        Transaction information.
      */
 
     public function withdrawCrypto($params)
     {
-
+        return $this->client->postPrivate('withdrawals/crypto', $params);
     }
 
     /**
      * List of available payment methods
      *
-     * @return array         Payment methods inormation.
+     * @return array         Payment methods information.
      */
 
     public function paymentMethods()
     {
-
+        return $this->client->getPrivate('payment-methods', []);
     }
 
     /**
@@ -368,7 +371,7 @@ class PrivateApi implements PrivateApiClientInterface
 
     public function coinbaseAccounts()
     {
-
+        return $this->client->getPrivate('coinbase-accounts');
     }
 
     /**
@@ -382,7 +385,7 @@ class PrivateApi implements PrivateApiClientInterface
 
     public function createReport($params)
     {
-
+        return $this->client->postPrivate('reports', $params);
     }
 
     /**
@@ -396,7 +399,9 @@ class PrivateApi implements PrivateApiClientInterface
 
     public function reportStatus($reportId)
     {
+        $endpoint = "reports/{$reportId}";
 
+        return $this->client->getPrivate($endpoint);
     }
 
     /**
@@ -407,7 +412,6 @@ class PrivateApi implements PrivateApiClientInterface
 
     public function trailingVolume()
     {
-
+        return $this->client->getPrivate('users/self/trailing-volume');
     }
-
 }

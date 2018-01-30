@@ -70,8 +70,8 @@ class PublicApiTest extends TestCase
         VCR::insertCassette('history_endpoint.yml');
 
         $history = $this->publicApi->history([
-            product => 'ETH-USD',
-            start => '2018-01-01T00:00:00+00:00'
+            'product' => 'ETH-USD',
+            'start' => '2018-01-01T00:00:00+00:00'
         ]);
 
         $this->assertTrue(is_array($history));

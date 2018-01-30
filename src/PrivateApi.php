@@ -58,7 +58,7 @@ class PrivateApi implements PrivateApiClientInterface
      * All accounts for the authenticated user, or a single
      * account if an ID is passed
      *
-     * @param  string    $accountId (optional) limits the response to a single account
+     * @param  string $accountId (optional) limits the response to a single account
      * @return array     Account information
      */
 
@@ -71,8 +71,8 @@ class PrivateApi implements PrivateApiClientInterface
     /**
      * Transaction history for an account
      *
-     * @param  string     $accountId
-     * @param  array      $pagination (optional)
+     * @param string $accountId
+     * @param array  $pagination (optional)
      *
      * @return array      Transaction history for the account
      */
@@ -86,8 +86,8 @@ class PrivateApi implements PrivateApiClientInterface
     /**
      * Fund holds for an account
      *
-     * @param  string     $accountId
-     * @param  array      $pagination (optional)
+     * @param string $accountId
+     * @param array  $pagination (optional)
      *
      * @return array      Holds for the account
      */
@@ -101,10 +101,11 @@ class PrivateApi implements PrivateApiClientInterface
     /**
      * Place a trade order.
      *
-     * @param  array      $params Too many to list, see https://docs.gdax.com/#place-a-new-order.
-     *                            The array keys must match the parameter name in the documentation
+     * @param array $params Too many to list, see https://docs.gdax.com/#place-a-new-order.
+     *                      The array keys must match the parameter name in the
+     *                      documentation
      *
-     * @todo              Analyze order parameters, and prevent placement if invalid
+     * @todo Analyze order parameters, and prevent placement if invalid
      *
      * @return array      Order infromation
      */
@@ -117,7 +118,7 @@ class PrivateApi implements PrivateApiClientInterface
     /**
      * Cancels an open order
      *
-     * @param  string     $orderId Order ID
+     * @param string $orderId Order ID
      *
      * @return string     Cancellation success or failure
      */
@@ -132,7 +133,7 @@ class PrivateApi implements PrivateApiClientInterface
     /**
      * Cancels multiple open orders
      *
-     * @param  string     $productId (optional) Specify to only cancell orders for a specific product
+     * @param string $productId (optional) Specify to only cancell orders for a specific product
      *
      * @return array      List of IDs of cancelled orders
      */
@@ -146,11 +147,11 @@ class PrivateApi implements PrivateApiClientInterface
     /**
      * List orders
      *
-     * @param  array      $status     (optional) Specify one or more statuses, or "all".
-     *                                Omitting the status defaults to open orders only.
-     * @todo              Allow passing multiple statuses
-     * @param  string     $productId  (optional) Only list orders for a specific product.
-     * @param  array      $pagination (optional)
+     * @param array  $status     (optional) Specify one or more statuses, or "all".
+     *                           Omitting the status defaults to open orders only.
+     * @todo  Allow passing multiple statuses
+     * @param string $productId  (optional) Only list orders for a specific product.
+     * @param array  $pagination (optional)
      *
      * @return array      List of orders matching the criteria
      */
@@ -173,7 +174,7 @@ class PrivateApi implements PrivateApiClientInterface
     /**
      * Information for an order
      *
-     * @param  string     $orderId ID of the order
+     * @param string $orderId ID of the order
      *
      * @return array      Information about the order
      */
@@ -187,9 +188,9 @@ class PrivateApi implements PrivateApiClientInterface
     /**
      * List fills
      *
-     * @param  string     $orderId    (optional) Limit the fills to a particular order
-     * @param  string     $productId  (optional) Only list fills for a specific product.
-     * @param  array      $pagination (optional)
+     * @param string $orderId    (optional) Limit the fills to a particular order
+     * @param string $productId  (optional) Only list fills for a specific product.
+     * @param array  $pagination (optional)
      *
      * @return array      List of fills matching the criteria.
      */
@@ -212,8 +213,8 @@ class PrivateApi implements PrivateApiClientInterface
     /**
      * Funding records for margin orders
      *
-     * @param  string  $status     (optional) Defaults to all statuses
-     * @param  array   $pagination
+     * @param string $status     (optional) Defaults to all statuses
+     * @param array  $pagination
      *
      * @return array  List of funding records
      */
@@ -232,8 +233,8 @@ class PrivateApi implements PrivateApiClientInterface
     /**
      * Repays funding records. Older gets paid first.
      *
-     * @param  mixed   integer|float $amount
-     * @param  string  string $currency       Currency symbol (e.g USD)
+     * @param mixed   integer|float $amount
+     * @param string  string        $currency Currency symbol (e.g USD)
      *
      * @todo   review this method against the API, provide meaningful return values
      * @return string  result of transaction
@@ -248,7 +249,7 @@ class PrivateApi implements PrivateApiClientInterface
      * Transfer funds between a standard account, and a margin  account
      * or vice versa.
      *
-     * @param  array      $params See https://docs.gdax.com/#margin-transfer
+     * @param array $params See https://docs.gdax.com/#margin-transfer
      *
      * @return array      Result of the transfer transaction.
      */
@@ -272,8 +273,8 @@ class PrivateApi implements PrivateApiClientInterface
     /**
      * Closes a position
      *
-     * @param  bool        $repayOnly
-     * @todo   review this method against the API, provide meaningful return values
+     * @param bool $repayOnly
+     * @todo  review this method against the API, provide meaningful return values
      *
      * @return string      Status of the transaction
      */
@@ -288,7 +289,7 @@ class PrivateApi implements PrivateApiClientInterface
     /**
      * Make a deposit from one of the available payment methods
      *
-     * @param  array   $params amount, currency, payment method ID. See https://docs.gdax.com/#deposits
+     * @param array $params amount, currency, payment method ID. See https://docs.gdax.com/#deposits
      *
      * @return array   Information regarding the transaction.
      */
@@ -301,7 +302,7 @@ class PrivateApi implements PrivateApiClientInterface
     /**
      * Transfer funds from Coinbase to GDAX
      *
-     * @param  array        $params Amount, currency, coinbase account id
+     * @param array $params Amount, currency, coinbase account id
      *
      * @return array        Transaction information.
      */
@@ -314,8 +315,8 @@ class PrivateApi implements PrivateApiClientInterface
     /**
      * Transfer funds from GDAX to an external account
      *
-     * @param  array        $params Amount, currency, payment method id
-     * @todo                Write test
+     * @param array $params Amount, currency, payment method id
+     * @todo  Write test
      *
      * @return array        Transaction information.
      */
@@ -328,7 +329,7 @@ class PrivateApi implements PrivateApiClientInterface
     /**
      * Transfer funds from GDAX to Coinbase
      *
-     * @param  array        $params Amount, currency, coinbase account id
+     * @param array $params Amount, currency, coinbase account id
      *
      * @return array        Transaction information.
      */
@@ -341,8 +342,8 @@ class PrivateApi implements PrivateApiClientInterface
     /**
      * Transfer funds from GDAX to a crypto address
      *
-     * @param  array        $params Amount, currency, crypto address
-     * @todo                Write test
+     * @param array $params Amount, currency, crypto address
+     * @todo  Write test
      *
      * @return array        Transaction information.
      */
@@ -377,7 +378,7 @@ class PrivateApi implements PrivateApiClientInterface
     /**
      * Create a report
      *
-     * @param  array       $params
+     * @param array $params
      *
      * @return array       Report information (not the report itself,
      *                     which is generated independently of the API call.)
@@ -391,7 +392,7 @@ class PrivateApi implements PrivateApiClientInterface
     /**
      * Status of a report
      *
-     * @param  string       $reportId
+     * @param string $reportId
      *
      * @return array        Report information. `file_url` has the download URL if the report
      *                      has been created.

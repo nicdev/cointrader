@@ -9,16 +9,15 @@ namespace Cointrader;
 class PublicApi implements PublicApiClientInterface
 {
 
-   /**
-    * @var $client must be an instance of Cointrader\ApiCaller
-    */
+    /**
+     * @var $client must be an instance of Cointrader\ApiCaller
+     */
     protected $client;
 
     /**
      * Creates a PublicApi object to use the public methods of the API
      *
-     * @param Cointrader\ApiCaller $apiCaller  makes the actual requests to the API
-     *
+     * @param Cointrader\ApiCaller $apiCaller makes the actual requests to the API
      */
 
     public function __construct(ApiCaller $apiCaller)
@@ -41,8 +40,8 @@ class PublicApi implements PublicApiClientInterface
     /**
      * List of open orders
      *
-     * @param  string    $product One of the available products.
-     * @param  integer   $level   1, 2, or 3 see https://docs.gdax.com/#get-product-order-book
+     * @param string  $product One of the available products.
+     * @param integer $level   1, 2, or 3 see https://docs.gdax.com/#get-product-order-book
      *
      * @return array     List of open orders (results vary depending on level selected.)
      */
@@ -55,7 +54,7 @@ class PublicApi implements PublicApiClientInterface
     /**
      * Snapshot of the last trade
      *
-     * @param  string   $product One of the available products.
+     * @param string $product One of the available products.
      *
      * @return array    Information about the last trade.
      */
@@ -68,8 +67,8 @@ class PublicApi implements PublicApiClientInterface
     /**
      * List of trades
      *
-     * @param  string   $product One of the available products.
-     * @param  array    $pagination
+     * @param string $product    One of the available products.
+     * @param array  $pagination
      *
      * @return array    List of trades.
      */
@@ -82,9 +81,11 @@ class PublicApi implements PublicApiClientInterface
     /**
      * Historical data for a product
      *
-     * @param  array  $params     Start date, end date, granularity.
-     *                            Dates must be in ISO 8061 format, granularity is in seconds
-     *                            and must be one of: 60, 300, 900, 3600, 21600, 86400
+     * @param  array $params Start date, end date, granularity.
+     *                       Dates must be in ISO 8061 format,
+     *                       granularity is in seconds and must
+     *                       be one of: 60, 300, 900, 3600,
+     *                       21600, 86400
      * @return array  Historical information in "buckets." See https://docs.gdax.com/#get-historic-rates.
      */
 
@@ -103,7 +104,7 @@ class PublicApi implements PublicApiClientInterface
     /**
      * Stats for a product for the last 24 hours
      *
-     * @param  string    Product (BTC-USD, etc.)
+     * @param string    Product (BTC-USD, etc.)
      *
      * @return array     Overall trade information for the product
      */

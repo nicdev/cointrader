@@ -19,7 +19,8 @@ class ApiCaller implements ApiCallerInterface
         $this->base_uri = $baseUri;
 
         if (array_key_exists('key', $privateParams) && array_key_exists('secret', $privateParams)
-            && array_key_exists('passphrase', $privateParams)) {
+            && array_key_exists('passphrase', $privateParams)
+        ) {
                 $this->key = $privateParams['key'];
                 $this->secret = $privateParams['secret'];
                 $this->passphrase = $privateParams['passphrase'];

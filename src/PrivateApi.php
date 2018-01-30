@@ -65,7 +65,7 @@ class PrivateApi implements PrivateApiClientInterface
     public function tradingAccounts($accountId = null)
     {
         $endpoint = $accountId ? "accounts/{$accountId}" : 'accounts';
-        return $this->client->getPrivate($endpoint, [], true);
+        return $this->client->getPrivate($endpoint);
     }
 
     /**
@@ -80,7 +80,7 @@ class PrivateApi implements PrivateApiClientInterface
     public function accountHistory($accountId, $pagination = [])
     {
         $endpoint = "accounts/{$accountId}/ledger";
-        return $this->client->getPrivate($endpoint, []);
+        return $this->client->getPrivate($endpoint);
     }
 
     /**
@@ -95,7 +95,7 @@ class PrivateApi implements PrivateApiClientInterface
     public function accountHolds($accountId, $pagination = [])
     {
         $endpoint = "accounts/{$accountId}/holds";
-        return $this->client->getPrivate($endpoint, []);
+        return $this->client->getPrivate($endpoint);
     }
 
     /**
@@ -181,7 +181,7 @@ class PrivateApi implements PrivateApiClientInterface
     public function order($orderId)
     {
         $endpoint = "orders/{$orderId}";
-        return $this->client->getPrivate($endpoint, []);
+        return $this->client->getPrivate($endpoint);
     }
 
     /**
@@ -266,7 +266,7 @@ class PrivateApi implements PrivateApiClientInterface
 
     public function position()
     {
-        return $this->client->getPrivate('position', []);
+        return $this->client->getPrivate('position');
     }
 
     /**
@@ -360,7 +360,7 @@ class PrivateApi implements PrivateApiClientInterface
 
     public function paymentMethods()
     {
-        return $this->client->getPrivate('payment-methods', []);
+        return $this->client->getPrivate('payment-methods');
     }
 
     /**

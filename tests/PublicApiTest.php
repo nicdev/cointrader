@@ -55,4 +55,43 @@ class PublicApiTest extends TestCase
 
         $this->assertTrue(is_array($ticker));
     }
+
+    public function testGetsTrades()
+    {
+        VCR::insertCassette('trades_endpoint.yml');
+
+        $trades = $this->publicApi->ticker('ETH-USD');
+
+        $this->assertTrue(is_array($trades));
+    }
+
+    public function testGetsHistory()
+    {
+        VCR::insertCassette('history_endpoint.yml');
+
+        $history = $this->publicApi->history([
+            product => 'ETH-USD',
+            start => '2018-01-01T00:00:00+00:00'
+        ]);
+
+        $this->assertTrue(is_array($history));
+    }
+
+    public function testsGetStats()
+    {
+        VCR::insertCassette('stats_endpoint.yml');
+
+        $stats = $this->publicApi->stats('ETH-USD');
+
+        $this->assertTrue(is_array($stats));
+    }
+
+    public function testsGetCurrencies()
+    {
+        VCR::insertCassette('currencies_endpoint.yml');
+
+        $currencies = $this->publicApi->currencies();
+
+        $this->assertTrue(is_array($currencies));
+    }
 }

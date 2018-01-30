@@ -276,7 +276,6 @@ class PrivateApiTest extends TestCase
         $this->assertTrue(is_array($report));
 
         return $report;
-
     }
 
     /**

@@ -26,5 +26,4 @@ interface PublicApiClientInterface
     public function currencies();
 
     public function time();
-
 }

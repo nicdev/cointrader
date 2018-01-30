@@ -96,7 +96,8 @@ class PublicApi implements PublicApiClientInterface
               'start' => $params['start'],
               'end' => $params['end'],
               'granularity' => $params['granularity']
-            ]);
+            ]
+        );
     }
 
     /**

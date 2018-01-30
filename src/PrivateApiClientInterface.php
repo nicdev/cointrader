@@ -58,6 +58,4 @@ interface PrivateApiClientInterface
     public function reportStatus($reportId);
 
     public function trailingVolume();
-
-
 }

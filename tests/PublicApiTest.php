@@ -38,4 +38,5 @@ class PublicApiTest extends TestCase
       $this->assertArrayHasKey('bids', $orderBook);
       $this->assertArrayHasKey('asks', $orderBook);
     }
+
   }

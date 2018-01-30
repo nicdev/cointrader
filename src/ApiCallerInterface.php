@@ -20,5 +20,9 @@ interface ApiCallerInterface
 
     public function postPrivate($endpoint, array $payload);
 
+    public function delete($endpoint);
+
+    public function deletePrivate($endpoint);
+
     public function request($method, $endpoint, $params);
 }

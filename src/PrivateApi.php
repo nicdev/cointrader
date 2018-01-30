@@ -48,7 +48,10 @@ class PrivateApi implements PrivateApiClientInterface
         $this->secret = $secret;
         $this->passphrase = $passphrase;
         $this->client = $apiCaller;
-        $this->client->init(self::ENDPOINT_URL, ['key' => $this->key, 'secret' => $this->secret, 'passphrase' => $this->passphrase]);
+        $this->client->init(
+            self::ENDPOINT_URL,
+            ['key' => $this->key, 'secret' => $this->secret, 'passphrase' => $this->passphrase]
+        );
     }
 
     /**
@@ -62,7 +65,7 @@ class PrivateApi implements PrivateApiClientInterface
     public function tradingAccounts($accountId = null)
     {
         $endpoint = $accountId ? "accounts/{$accountId}" : 'accounts';
-        return $this->client->getPrivate($endpoint, [], true);
+        return $this->client->getPrivate($endpoint);
     }
 
     /**
@@ -77,7 +80,7 @@ class PrivateApi implements PrivateApiClientInterface
     public function accountHistory($accountId, $pagination = [])
     {
         $endpoint = "accounts/{$accountId}/ledger";
-        return $this->client->getPrivate($endpoint, []);
+        return $this->client->getPrivate($endpoint);
     }
 
     /**
@@ -92,21 +95,23 @@ class PrivateApi implements PrivateApiClientInterface
     public function accountHolds($accountId, $pagination = [])
     {
         $endpoint = "accounts/{$accountId}/holds";
-        return $this->client->getPrivate($endpoint, []);
+        return $this->client->getPrivate($endpoint);
     }
 
     /**
-     * Place a trade order
+     * Place a trade order.
      *
      * @param  array      $params Too many to list, see https://docs.gdax.com/#place-a-new-order.
      *                            The array keys must match the parameter name in the documentation
+     *
+     * @todo              Analyze order parameters, and prevent placement if invalid
      *
      * @return array      Order infromation
      */
 
     public function placeOrder($params)
     {
-
+        return $this->client->postPrivate('orders', $params);
     }
 
     /**
@@ -119,7 +124,8 @@ class PrivateApi implements PrivateApiClientInterface
 
     public function cancelOrder($orderId)
     {
-
+        $endpoint = "orders/{$orderId}";
+        return $this->client->deletePrivate($endpoint);
     }
 
 
@@ -131,9 +137,10 @@ class PrivateApi implements PrivateApiClientInterface
      * @return array      List of IDs of cancelled orders
      */
 
-    public function cancelAllOrders($productId)
+    public function cancelAllOrders($productId = null)
     {
-
+        $endpoint = "orders/?{$productId}";
+        return $this->client->deletePrivate($endpoint);
     }
 
     /**
@@ -141,15 +148,26 @@ class PrivateApi implements PrivateApiClientInterface
      *
      * @param  array      $status     (optional) Specify one or more statuses, or "all".
      *                                Omitting the status defaults to open orders only.
+     * @todo              Allow passing multiple statuses
      * @param  string     $productId  (optional) Only list orders for a specific product.
      * @param  array      $pagination (optional)
      *
      * @return array      List of orders matching the criteria
      */
 
-    public function orders($status = [], $productId = null, $pagination = [])
+    public function orders($status = null, $productId = null, $pagination = [])
     {
-        return $this->client->getPrivate('orders', []);
+        if ($status) {
+            $query['status'] = $status;
+        }
+
+        if ($productId) {
+            $query['product_id'] = $productId;
+        }
+
+        $query = count($query) > 0 ? array_merge($query, $pagination) : $pagination;
+
+        return $this->client->getPrivate('orders', $query);
     }
 
     /**
@@ -162,7 +180,8 @@ class PrivateApi implements PrivateApiClientInterface
 
     public function order($orderId)
     {
-
+        $endpoint = "orders/{$orderId}";
+        return $this->client->getPrivate($endpoint);
     }
 
     /**
@@ -177,7 +196,17 @@ class PrivateApi implements PrivateApiClientInterface
 
     public function fills($orderId = null, $productId = null, $pagination = [])
     {
+        if ($orderId) {
+            $query['order_id'] = $orderId;
+        }
 
+        if ($productId) {
+            $query['product_id'] = $productId;
+        }
+
+        $query = count($query) > 0 ? array_merge($query, $pagination) : $pagination;
+
+        return $this->client->getPrivate('orders', $query);
     }
 
     /**
@@ -189,9 +218,15 @@ class PrivateApi implements PrivateApiClientInterface
      * @return array  List of funding records
      */
 
-    public function funding($status = null, $pagination = [])
+    public function fundings($status = null, $pagination = [])
     {
+        if ($status) {
+            $query['status'] = $status;
+        }
 
+        $query = count($query) > 0 ? array_merge($query, $pagination) : $pagination;
+
+        return $this->client->getPrivate('funding', $query);
     }
 
     /**
@@ -206,7 +241,7 @@ class PrivateApi implements PrivateApiClientInterface
 
     public function repay($params)
     {
-
+        throw new \Exception("Method not implemented");
     }
 
     /**
@@ -220,7 +255,7 @@ class PrivateApi implements PrivateApiClientInterface
 
     public function marginTransfer($params)
     {
-
+        throw new \Exception("Method not implemented");
     }
 
     /**
@@ -231,7 +266,7 @@ class PrivateApi implements PrivateApiClientInterface
 
     public function position()
     {
-
+        return $this->client->getPrivate('position');
     }
 
     /**
@@ -243,9 +278,11 @@ class PrivateApi implements PrivateApiClientInterface
      * @return string      Status of the transaction
      */
 
-    public function closePosition($repayOnly)
+    public function closePosition($repayOnly = false)
     {
+        $query = ['repay_only' => $repayOnly];
 
+        return $this->client->getPrivate('position/close', $query);
     }
 
     /**
@@ -258,7 +295,7 @@ class PrivateApi implements PrivateApiClientInterface
 
     public function deposit($params)
     {
-
+        return $this->client->postPrivate('deposits/payment-method', $params);
     }
 
     /**
@@ -271,20 +308,21 @@ class PrivateApi implements PrivateApiClientInterface
 
     public function coinbaseTransfer($params)
     {
-
+        return $this->client->postPrivate('/deposits/coinbase-account', $params);
     }
 
     /**
      * Transfer funds from GDAX to an external account
      *
      * @param  array        $params Amount, currency, payment method id
+     * @todo                Write test
      *
      * @return array        Transaction information.
      */
 
     public function withdraw($params)
     {
-
+        return $this->client->postPrivate('withdrawals/payment-method', $params);
     }
 
     /**
@@ -297,31 +335,32 @@ class PrivateApi implements PrivateApiClientInterface
 
     public function coinbaseWithdraw($params)
     {
-
+        return $this->client->postPrivate('withdrawals/coinbase-account', $params);
     }
 
     /**
      * Transfer funds from GDAX to a crypto address
      *
      * @param  array        $params Amount, currency, crypto address
+     * @todo                Write test
      *
      * @return array        Transaction information.
      */
 
     public function withdrawCrypto($params)
     {
-
+        return $this->client->postPrivate('withdrawals/crypto', $params);
     }
 
     /**
      * List of available payment methods
      *
-     * @return array         Payment methods inormation.
+     * @return array         Payment methods information.
      */
 
     public function paymentMethods()
     {
-
+        return $this->client->getPrivate('payment-methods');
     }
 
     /**
@@ -332,7 +371,7 @@ class PrivateApi implements PrivateApiClientInterface
 
     public function coinbaseAccounts()
     {
-
+        return $this->client->getPrivate('coinbase-accounts');
     }
 
     /**
@@ -346,7 +385,7 @@ class PrivateApi implements PrivateApiClientInterface
 
     public function createReport($params)
     {
-
+        return $this->client->postPrivate('reports', $params);
     }
 
     /**
@@ -360,7 +399,9 @@ class PrivateApi implements PrivateApiClientInterface
 
     public function reportStatus($reportId)
     {
+        $endpoint = "reports/{$reportId}";
 
+        return $this->client->getPrivate($endpoint);
     }
 
     /**
@@ -371,7 +412,6 @@ class PrivateApi implements PrivateApiClientInterface
 
     public function trailingVolume()
     {
-
+        return $this->client->getPrivate('users/self/trailing-volume');
     }
-
 }

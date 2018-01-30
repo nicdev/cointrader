@@ -10,33 +10,36 @@ use VCR\VCR;
 class PublicApiTest extends TestCase
 {
 
-    public function testGetsProducts()
+    protected function setUp()
     {
-
+        VCR::configure()->setCassettePath('private-tests/fixtures');
+        VCR::configure()->setMode('once');
+        VCR::configure()->enableRequestMatchers(['method', 'url', 'host']);
         VCR::turnOn();
-        VCR::insertCassette('products_endpoint.yml');
 
-        $this->publicApi = new PublicApi(new ApiCaller);
+        $this->publicApi = new PublicApi(new ApiCaller, API_KEY, API_SECRET, API_PASSPHRASE);
+    }
 
-        $products = $this->publicApi->products();
-
+    protected function tearDown()
+    {
         VCR::eject();
         VCR::turnOff();
+    }
+
+    public function testGetsProducts()
+    {
+        VCR::insertCassette('products_endpoint');
+
+        $products = $this->publicApi->products();
 
         $this->assertTrue(is_array($products));
     }
 
     public function testGetsOrderBook()
     {
-        VCR::turnOn();
-        VCR::insertCassette('orderbook_endpoint.yml');
-
-        $this->publicApi = new PublicApi(new ApiCaller);
+        VCR::insertCassette('order_book_endpoint');
 
         $orderBook = $this->publicApi->orderBook('BTC-USD', 1);
-
-        VCR::eject();
-        VCR::turnOff();
 
         $this->assertTrue(is_array($orderBook));
         $this->assertArrayHasKey('sequence', $orderBook);

@@ -2,7 +2,7 @@
 -
     request:
         method: GET
-        url: 'https://api.gdax.com/products/BTC-USD/book'
+        url: 'https://api.gdax.com/products/ETH-USD/ticker'
         headers:
             Host: api.gdax.com
             Accept-Encoding: null
@@ -14,21 +14,21 @@
             code: '200'
             message: OK
         headers:
-            Date: 'Thu, 25 Jan 2018 20:11:18 GMT'
+            Date: 'Tue, 30 Jan 2018 15:43:21 GMT'
             Content-Type: 'application/json; charset=utf-8'
-            Content-Length: '96'
+            Content-Length: '158'
             Connection: keep-alive
-            Set-Cookie: '__cfduid=dcdae7315b5b7355534e373182cfbdc321516911078; expires=Fri, 25-Jan-19 20:11:18 GMT; path=/; domain=.gdax.com; HttpOnly'
+            Set-Cookie: '__cfduid=d37720c880d326e32f005688b9075bea21517327001; expires=Wed, 30-Jan-19 15:43:21 GMT; path=/; domain=.gdax.com; HttpOnly'
             Access-Control-Allow-Headers: 'Content-Type, Accept, cb-session, cb-fp'
             Access-Control-Allow-Methods: 'GET,POST,DELETE,PUT'
             Access-Control-Allow-Origin: '*'
             Access-Control-Expose-Headers: 'cb-before, cb-after'
             Access-Control-Max-Age: '7200'
             Cache-Control: 'public, max-age=1'
-            ETag: 'W/"60-O2s+1P9vQOqwk+A/xPyU9vIBgpQ"'
+            ETag: 'W/"9e-DzvMDbYdqMxzL9rK9rMA5wrsGFM"'
             Strict-Transport-Security: 'max-age=15552000; includeSubDomains; preload'
             X-Content-Type-Options: nosniff
             Expect-CT: 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"'
             Server: cloudflare
-            CF-RAY: 3e2de180bc928327-ATL
-        body: '{"sequence":4944350756,"bids":[["11239.99","24.03761677",34]],"asks":[["11240","1.17585391",2]]}'
+            CF-RAY: 3e558be2084d82a3-ATL
+        body: '{"trade_id":27549426,"price":"1105.99000000","size":"0.00904167","bid":"1105.99","ask":"1106","volume":"133521.62375597","time":"2018-01-30T15:43:21.913000Z"}'

@@ -166,7 +166,7 @@ class PrivateApi implements PrivateApiClientInterface
             $query['product_id'] = $productId;
         }
 
-        $query = count($query) > 0 ? array_merge($query, $pagination) : $pagination;
+        $query = isset($query) && count($query) > 0 ? array_merge($query, $pagination) : $pagination;
 
         return $this->client->getPrivate('orders', $query);
     }
@@ -205,7 +205,7 @@ class PrivateApi implements PrivateApiClientInterface
             $query['product_id'] = $productId;
         }
 
-        $query = count($query) > 0 ? array_merge($query, $pagination) : $pagination;
+        $query = isset($query) && count($query) > 0 ? array_merge($query, $pagination) : $pagination;
 
         return $this->client->getPrivate('orders', $query);
     }
@@ -225,7 +225,7 @@ class PrivateApi implements PrivateApiClientInterface
             $query['status'] = $status;
         }
 
-        $query = count($query) > 0 ? array_merge($query, $pagination) : $pagination;
+        $query = isset($query) && count($query) > 0 ? array_merge($query, $pagination) : $pagination;
 
         return $this->client->getPrivate('funding', $query);
     }

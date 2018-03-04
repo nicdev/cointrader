@@ -84,7 +84,7 @@ class ApiCaller implements ApiCallerInterface
         return $this->request('DELETE', $endpoint, null);
     }
 
-    public function deletePrivate($endpoint)
+    public function deletePrivate($endpoint, $payload = null)
     {
         $headers = self::makeHeaders(self::makeSignature('DELETE', $endpoint, $payload));
 

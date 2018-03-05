@@ -2,9 +2,9 @@
 -
     request:
         method: GET
-        url: 'https://api.gdax.com/time'
+        url: 'https://api-public.sandbox.gdax.com/time'
         headers:
-            Host: api.gdax.com
+            Host: api-public.sandbox.gdax.com
             Accept-Encoding: null
             User-Agent: 'GuzzleHttp/6.2.1 curl/7.54.0 PHP/7.1.7'
             Accept: null
@@ -14,20 +14,20 @@
             code: '200'
             message: OK
         headers:
-            Date: 'Tue, 30 Jan 2018 15:43:20 GMT'
+            Date: 'Mon, 05 Mar 2018 01:45:13 GMT'
             Content-Type: 'application/json; charset=utf-8'
-            Content-Length: '56'
+            Content-Length: '57'
             Connection: keep-alive
-            Set-Cookie: '__cfduid=d65d287a3dc2bfab09a71d0167c3d94341517327000; expires=Wed, 30-Jan-19 15:43:20 GMT; path=/; domain=.gdax.com; HttpOnly'
+            Set-Cookie: '__cfduid=dd5b2abfb4793371734021d55f50832ba1520214313; expires=Tue, 05-Mar-19 01:45:13 GMT; path=/; domain=.gdax.com; HttpOnly'
             Access-Control-Allow-Headers: 'Content-Type, Accept, cb-session, cb-fp'
             Access-Control-Allow-Methods: 'GET,POST,DELETE,PUT'
             Access-Control-Allow-Origin: '*'
             Access-Control-Expose-Headers: 'cb-before, cb-after'
             Access-Control-Max-Age: '7200'
-            ETag: 'W/"38-PSUgbWIz6cx10UVperpzdvSSj9A"'
+            ETag: 'W/"39-EtG+3yJelACIeQAufsBnyIsZj3Q"'
             Strict-Transport-Security: 'max-age=15552000; includeSubDomains; preload'
             X-Content-Type-Options: nosniff
             Expect-CT: 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"'
             Server: cloudflare
-            CF-RAY: 3e558bdafe15833f-ATL
-        body: '{"iso":"2018-01-30T15:43:20.870Z","epoch":1517327000.87}'
+            CF-RAY: 3f68e6e3288a830f-ATL
+        body: '{"iso":"2018-03-05T01:45:13.527Z","epoch":1520214313.527}'

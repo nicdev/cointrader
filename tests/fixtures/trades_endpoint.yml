@@ -14,21 +14,21 @@
             code: '200'
             message: OK
         headers:
-            Date: 'Tue, 30 Jan 2018 15:46:26 GMT'
+            Date: 'Mon, 05 Mar 2018 01:45:15 GMT'
             Content-Type: 'application/json; charset=utf-8'
-            Content-Length: '161'
+            Content-Length: '157'
             Connection: keep-alive
-            Set-Cookie: '__cfduid=d2ae7d7ee20fa29808740b72fe61ee1971517327186; expires=Wed, 30-Jan-19 15:46:26 GMT; path=/; domain=.gdax.com; HttpOnly'
+            Set-Cookie: '__cfduid=d379d068df4b3d09d0b3a3c499601f6621520214315; expires=Tue, 05-Mar-19 01:45:15 GMT; path=/; domain=.gdax.com; HttpOnly'
             Access-Control-Allow-Headers: 'Content-Type, Accept, cb-session, cb-fp'
             Access-Control-Allow-Methods: 'GET,POST,DELETE,PUT'
             Access-Control-Allow-Origin: '*'
             Access-Control-Expose-Headers: 'cb-before, cb-after'
             Access-Control-Max-Age: '7200'
             Cache-Control: 'public, max-age=1'
-            ETag: 'W/"a1-wYfh+fT0YlAtU81+dntSMapQ/rc"'
+            ETag: 'W/"9d-YUDw1V8rSnFke/eeXt6rChTOwgA"'
             Strict-Transport-Security: 'max-age=15552000; includeSubDomains; preload'
             X-Content-Type-Options: nosniff
             Expect-CT: 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"'
             Server: cloudflare
-            CF-RAY: 3e559062ac5038a0-ATL
-        body: '{"trade_id":27549813,"price":"1104.79000000","size":"0.00902442","bid":"1104.78","ask":"1104.79","volume":"134277.50241250","time":"2018-01-30T15:46:25.739000Z"}'
+            CF-RAY: 3f68e6f16ca1384c-ATL
+        body: '{"trade_id":30043619,"price":"861.15000000","size":"0.01670000","bid":"861.14","ask":"861.15","volume":"36624.80935802","time":"2018-03-05T01:45:12.204000Z"}'

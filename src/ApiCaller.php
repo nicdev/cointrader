@@ -27,9 +27,10 @@ class ApiCaller implements ApiCallerInterface
         }
     }
 
-    protected function makeSignature($method, $endpoint, $body = null)
+    protected function makeSignature($method, $endpoint, $body = null, $query = null)
     {
         $body = is_array($body) ? json_encode($body) : $body;
+        $endpoint = $query ? $endpoint . '?' . http_build_query($query) : $endpoint;
 
         $requestPath = trim(substr($endpoint, 0, 1) === '/' ? $endpoint : '/' . $endpoint);
         $timestamp = time();
@@ -53,13 +54,14 @@ class ApiCaller implements ApiCallerInterface
 
     public function get($endpoint, array $query = [])
     {
+        $query = ['query' => $query];
         return $this->request('GET', $endpoint, $query);
     }
 
     public function getPrivate($endpoint, array $query = [])
     {
-        $headers = self::makeHeaders(self::makeSignature('GET', $endpoint));
-        $params = array_merge($query, $headers);
+        $headers = self::makeHeaders(self::makeSignature('GET', $endpoint, null, $query));
+        $params = array_merge(['query' => $query], $headers);
 
         return $this->request('GET', $endpoint, $params);
     }

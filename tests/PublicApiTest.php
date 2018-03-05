@@ -71,7 +71,9 @@ class PublicApiTest extends TestCase
 
         $history = $this->publicApi->history([
             'product' => 'ETH-USD',
-            'start' => '2018-01-01T00:00:00+00:00'
+            'start' => '2018-01-01T00:00:00+00:00',
+            'end' => '2018-01-02T00:00:00+00:00',
+            'granularity' => '3600'
         ]);
 
         $this->assertTrue(is_array($history));

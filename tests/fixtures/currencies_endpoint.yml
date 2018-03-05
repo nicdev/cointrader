@@ -14,11 +14,11 @@
             code: '200'
             message: OK
         headers:
-            Date: 'Tue, 30 Jan 2018 15:58:41 GMT'
+            Date: 'Mon, 05 Mar 2018 01:45:17 GMT'
             Content-Type: 'application/json; charset=utf-8'
             Content-Length: '630'
             Connection: keep-alive
-            Set-Cookie: '__cfduid=d44db4158579c91d3410d3d856600debd1517327921; expires=Wed, 30-Jan-19 15:58:41 GMT; path=/; domain=.gdax.com; HttpOnly'
+            Set-Cookie: '__cfduid=d10275a4129d228f65828677f8e9d82ba1520214317; expires=Tue, 05-Mar-19 01:45:17 GMT; path=/; domain=.gdax.com; HttpOnly'
             Access-Control-Allow-Headers: 'Content-Type, Accept, cb-session, cb-fp'
             Access-Control-Allow-Methods: 'GET,POST,DELETE,PUT'
             Access-Control-Allow-Origin: '*'
@@ -30,5 +30,5 @@
             X-Content-Type-Options: nosniff
             Expect-CT: 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"'
             Server: cloudflare
-            CF-RAY: 3e55a257386982f7-ATL
+            CF-RAY: 3f68e6fbadbc82e5-ATL
         body: '[{"id":"BTC","name":"Bitcoin","min_size":"0.00000001","status":"online","message":null},{"id":"EUR","name":"Euro","min_size":"0.01000000","status":"online","message":null},{"id":"LTC","name":"Litecoin","min_size":"0.00000001","status":"online","message":null},{"id":"GBP","name":"British Pound","min_size":"0.01000000","status":"online","message":null},{"id":"USD","name":"United States Dollar","min_size":"0.01000000","status":"online","message":null},{"id":"ETH","name":"Ether","min_size":"0.00000001","status":"online","message":null},{"id":"BCH","name":"Bitcoin Cash","min_size":"0.00000001","status":"online","message":null}]'

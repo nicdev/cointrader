@@ -14,21 +14,21 @@
             code: '200'
             message: OK
         headers:
-            Date: 'Tue, 30 Jan 2018 15:57:37 GMT'
+            Date: 'Mon, 05 Mar 2018 01:45:16 GMT'
             Content-Type: 'application/json; charset=utf-8'
-            Content-Length: '153'
+            Content-Length: '148'
             Connection: keep-alive
-            Set-Cookie: '__cfduid=d23ed6c5ad3694aabacf7643403d8fd3b1517327857; expires=Wed, 30-Jan-19 15:57:37 GMT; path=/; domain=.gdax.com; HttpOnly'
+            Set-Cookie: '__cfduid=d7fb85e9f8954e313c072f7d381dbd2c81520214316; expires=Tue, 05-Mar-19 01:45:16 GMT; path=/; domain=.gdax.com; HttpOnly'
             Access-Control-Allow-Headers: 'Content-Type, Accept, cb-session, cb-fp'
             Access-Control-Allow-Methods: 'GET,POST,DELETE,PUT'
             Access-Control-Allow-Origin: '*'
             Access-Control-Expose-Headers: 'cb-before, cb-after'
             Access-Control-Max-Age: '7200'
             Cache-Control: 'public, max-age=5'
-            ETag: 'W/"99-brlPd9qiXWozhrbpmphJphod3bo"'
+            ETag: 'W/"94-49iucLSKkX4ncQpftpPHtIVX+EY"'
             Strict-Transport-Security: 'max-age=15552000; includeSubDomains; preload'
             X-Content-Type-Options: nosniff
             Expect-CT: 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"'
             Server: cloudflare
-            CF-RAY: 3e55a0c4cd7182f7-ATL
-        body: '{"open":"1168.00000000","high":"1171.00000000","low":"1092.79000000","volume":"134379.35017414","last":"1108.92000000","volume_30day":"7676712.15633266"}'
+            CF-RAY: 3f68e6f84d8582c1-ATL
+        body: '{"open":"853.76000000","high":"865.00000000","low":"836.30000000","volume":"36624.80935802","last":"861.15000000","volume_30day":"4495735.54476403"}'

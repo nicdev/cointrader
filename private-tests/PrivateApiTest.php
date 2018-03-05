@@ -63,7 +63,7 @@ class PrivateApiTest extends TestCase
         VCR::insertCassette('accounts_endpoint.yml');
 
         $accounts = $this->privateApi->tradingAccounts();
-
+        var_dump($accounts);
         $this->assertTrue(is_array($accounts));
     }
 

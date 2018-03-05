@@ -11,7 +11,7 @@
         </testsuite>
     </testsuites>
     <php>
-      <const name="ENDPOINT_URL" value="https://api.gdax.com"/>
+      <const name="ENDPOINT_URL" value="https://api-public.sandbox.gdax.com"/>
       <const name="USD_ACCOUNT" value=""/>
       <const name="ETH_ACCOUNT" value=""/>
       <const name="API_KEY" value=""/>
